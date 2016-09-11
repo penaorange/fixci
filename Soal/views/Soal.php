@@ -80,7 +80,7 @@
                                 <td><?= $value->id_mapel; ?></td>
                                 <td><?= $value->nm_mapel; ?></td>
                                 <td><?= $value->jml_soal ?></td>
-                                <td><?= $value->waktu ?></td>
+                                <td><?= $value->waktu ?> Menit</td>
                                 <td>
                                     <button class="btn btn-primary" type="button" data-toggle="modal"  onclick="openModal('#editMapel', 'update',<?= $value->id_mapel ?>)"><span class="fa fa-pencil"></span></button>
                                     <button class="btn btn-info" type="button" data-toggle="modal" onclick="openModal('#hapus-mapel', 'delete',<?= $value->id_mapel ?>)"><span class="fa fa-eraser"></span></button></td>
