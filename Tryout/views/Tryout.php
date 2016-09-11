@@ -98,7 +98,7 @@
                                     foreach ($tryouttrial as $value) {
                                         ?>
                                         <tr>
-                                        <td><a href="#" data-toggle="modal" data-target="#delete<?= $value->id_tryout ?>"><span class="fa fa-close"></span></a></td>
+                                            <td><a href="#" data-toggle="modal" data-target="#delete<?= $value->id_tryout ?>"><span class="fa fa-close"></span></a></td>
                                             <td><?= $value->nm_tryout; ?></td>
                                             <td><?php
                                                 if ($value->to_kk == '1') {
@@ -139,12 +139,13 @@
                         <div class="tab-pane" id="berbayar">
                             <table id="example1" class="table table-bordered table-striped " style="text-align: center">
                                 <thead >
-                                    <tr>
-                                    	 
+                                    <tr> 
+                                        <th></th>
                                         <th style="text-align: center">Nama TryOut</th> 
                                         <th style="text-align: center">Kelompok Keilmuan</th> 
                                         <th style="text-align: center;">Tanggal</th>  
                                         <th style="text-align: center">Kelompok Peserta</th> 
+                                        <th style="text-align: center">Mata Pelajaran</th> 
                                         <th style="text-align: center;">Aksi</th>
                                     </tr>
                                 </thead>
@@ -153,7 +154,7 @@
                                     foreach ($tryoutberbayar as $value) {
                                         ?>
                                         <tr>
-                                       
+                                            <td><a href="#" data-toggle="modal" data-target="#delete<?= $value->id_tryout ?>"><span class="fa fa-close"></span></a></td>
                                             <td><?= $value->nm_tryout; ?></td>
                                             <td><?php
                                                 if ($value->to_kk == '1') {
@@ -181,8 +182,8 @@
                                                     echo "BIMBEL";
                                                 }
                                                 ?></td>
-                                           
-                                            <td><a data-toggle="modal" data-target="#update<?= $value->id_tryout ?>"><i class="fa fa-edit"></i></a>&nbsp;<a href="#" data-toggle="modal" data-target="#delete<?= $value->id_tryout ?>"><span class="fa fa-close"></span></a></td>
+                                            <td><a href="<?= site_url('Tryout/tampilMapel/' . $value->id_tryout); ?>" class="btn btn-default">Lihat</a></td>
+                                            <td><a data-toggle="modal" data-target="#update<?= $value->id_tryout ?>" class="btn btn-info"><i></i>Edit</a></td>
                                         </tr>
                                         <?php
                                     }
@@ -196,10 +197,12 @@
                             <table id="example2" class="table table-bordered table-striped " style="text-align: center">
                                 <thead >
                                     <tr> 
+                                        <th></th>
                                         <th style="text-align: center">Nama TryOut</th> 
                                         <th style="text-align: center">Kelompok Keilmuan</th> 
                                         <th style="text-align: center;">Tanggal</th>  
                                         <th style="text-align: center">Kelompok Peserta</th> 
+                                        <th style="text-align: center">Mata Pelajaran</th> 
                                         <th style="text-align: center;">Aksi</th>
                                     </tr>
                                 </thead>
@@ -208,6 +211,7 @@
                                     foreach ($tryoutbimbel as $value) {
                                         ?>
                                         <tr>
+                                            <td><a href="#" data-toggle="modal" data-target="#delete<?= $value->id_tryout ?>"><span class="fa fa-close"></span></a></td>
                                             <td><?= $value->nm_tryout; ?></td>
                                             <td><?php
                                                 if ($value->to_kk == '1') {
@@ -235,7 +239,8 @@
                                                     echo "BIMBEL";
                                                 }
                                                 ?></td>
-                                            <td><a data-toggle="modal" data-target="#update<?= $value->id_tryout ?>"><i class="fa fa-edit"></i></a>&nbsp;<a href="#" data-toggle="modal" data-target="#delete<?= $value->id_tryout ?>"><span class="fa fa-close"></span></a></td>
+                                            <td><a href="<?= site_url('Tryout/tampilMapel/' . $value->id_tryout); ?>" class="btn btn-default">Lihat</a></td>
+                                            <td><a data-toggle="modal" data-target="#update<?= $value->id_tryout ?>" class="btn btn-info"><i></i>Edit</a></td>
                                         </tr>
                                         <?php
                                     }
