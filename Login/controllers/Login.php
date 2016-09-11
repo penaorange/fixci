@@ -174,45 +174,43 @@ public function __construct() {
         }
     }
 
-   function sendMail($email, $hash){
-         $config = Array(
-        'protocol' => 'smtp',
-        'smtp_host' => 'ssl://mail.cermatinstitute.com',
-        'smtp_port' => 25,
-        'smtp_user' => 'no-reply@cermatinstitute.com', // change it to yours
-        'smtp_pass' => 'qweasd123', // change it to yours
-        'mailtype' => 'html',
-        'charset' => 'iso-8859-1',
-        'wordwrap' => TRUE,
-        'newline' => '\r\n' 
-      );
-       $this->load->library('email', $config);
-       $this->email->set_newline("\r\n");
-       $this->email->from('Cermat Institute'); // change it to yours
-       $this->email->to($email);// change it to yours
-
-        $message= /*-----------email body starts-----------*/
-        "Terima kasih telah mendaftar, ".$_POST['nm_peserta']."!
+  function sendMail($email,$hash) {
+        $config = Array(
+            'smtp_host' => 'mail.cermatinstitute.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'support@cermatinstitute.com', // change it to yours
+            'smtp_pass' => '123qweasd', // change it to yours
+            'smtp_auth' => true,
+        );
 
 
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('cermatinstitute'); // change it to yours
+        $this->email->to($email); // change it to yours
+
+        $message = /* -----------email body starts----------- */
+                "Terima kasih telah mendaftar, " . $this->data['nama'] . "!
+      
+        
         Berikut detail akun anda:
-
-        Email   : " . $_POST['email'] . "
-        Password: " . $_POST['password'] . "
-
-
+        
+        Username   : " . $this->data['username'] . "
+        Password: " . $this->input->post('password') . "
+       
+                        
         Klik link berikut untuk aktivasi akun anda:
+            
+        " . base_url() . "Trial/konfirmasi?" .
+                "email=" .$email . "&hash=" . $hash;
+        /* -----------email body ends----------- */
 
-        " . base_url() . "Login/konfirmasi?" .
-        "email=" . $_POST['email'] . "&hash=" . $hash ;
-		/*-----------email body ends-----------*/
 
 
-
-       $this->email->subject('Aktifasi akun');
-       $this->email->message($message);
-      $this->email->send();
- }
+        $this->email->subject('Aktifasi akun');
+        $this->email->message($message);
+        $this->email->send();
+    }
 
  function konfirmasi(){
  	      $result = $this->Model_login->get_hash_value($_GET['email']);

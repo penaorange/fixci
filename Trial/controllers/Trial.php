@@ -22,6 +22,7 @@ class Trial extends MX_Controller {
     }
 
     function tambahPeserta() {
+    	
         $this->data = array(
             'nm_peserta' => htmlspecialchars($this->input->post('nama')),
             'jenis_kelamin' => htmlspecialchars($this->input->post('jeniskelamin')),
@@ -40,7 +41,7 @@ class Trial extends MX_Controller {
         $this->Mtrial->simpanPeserta($this->data);
 
         $this->session->set_userdata($this->input->post('nama') . $this->input->post('nohp'), 1);
-        $this->sendMail(htmlspecialchars($this->input->post('email')));
+        $this->sendMail($this->data['email']);
 
         redirect(site_url('Trial'));
     }
@@ -84,23 +85,23 @@ class Trial extends MX_Controller {
 
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
-        $this->email->from('CermatInstitute'); // change it to yours
+        $this->email->from('cermatinstitute'); // change it to yours
         $this->email->to($email); // change it to yours
 
         $message = /* -----------email body starts----------- */
-                "Terima kasih telah mendaftar, " . $_POST['nama'] . "!
+                "Terima kasih telah mendaftar, " . $this->data['nama'] . "!
       
         
         Berikut detail akun anda:
         
-        Username   : " . $_POST['username'] . "
-        Password: " . $_POST['password'] . "
+        Username   : " . $this->data['username'] . "
+        Password: " . $this->input->post('password') . "
        
                         
         Klik link berikut untuk aktivasi akun anda:
             
         " . base_url() . "Trial/konfirmasi?" .
-                "email=" . $_POST['email'] . "&hash=" . $this->data['hash'];
+                "email=" .$email . "&hash=" . $this->data['hash'];
         /* -----------email body ends----------- */
 
 

@@ -22,6 +22,7 @@ class Berbayar extends MX_Controller {
     }
 
     function tambahPeserta() {
+    	
         $this->data = array(
             'nm_peserta' => htmlspecialchars($this->input->post('nama')),
             'jenis_kelamin' => htmlspecialchars($this->input->post('jeniskelamin')),
@@ -29,7 +30,7 @@ class Berbayar extends MX_Controller {
             'no_hp' => htmlspecialchars($this->input->post('nohp')),
             'email' => htmlspecialchars($this->input->post('email')),
             'username' => htmlspecialchars($this->input->post('username')),
-            'password' => htmlspecialchars($this->input->post('password')),
+            'password' => md5($this->input->post('password')),
             'id_kelompok_keilmuan' => htmlspecialchars($this->input->post('kelompokujian')),
             'id_kelompok_peserta' => '2',
             'hash' => md5(rand(0, 1000))
@@ -40,7 +41,7 @@ class Berbayar extends MX_Controller {
         $this->Mberbayar->simpanPeserta($this->data);
 
         $this->session->set_userdata($this->input->post('nama') . $this->input->post('nohp'), 1);
-        $this->sendMail(htmlspecialchars($this->input->post('email')));
+        $this->sendMail($this->data['email']);
 
         redirect(site_url('Berbayar'));
     }
@@ -87,38 +88,35 @@ class Berbayar extends MX_Controller {
         $this->load->view('Detailpeserta', $data);
     }
 
-    function sendMail($email) {
+   function sendMail($email) {
         $config = Array(
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_host' => 'mail.cermatinstitute.com',
             'smtp_port' => 465,
-            'smtp_user' => 'suport.cermatinstitute@gmail.com', // change it to yours
-            'smtp_pass' => '1mZDr779nk', // change it to yours
-            'mailtype' => 'html',
-            'charset' => 'iso-8859-1',
-            'wordwrap' => TRUE
+            'smtp_user' => 'support@cermatinstitute.com', // change it to yours
+            'smtp_pass' => '123qweasd', // change it to yours
+            'smtp_auth' => true,
         );
 
 
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
-        $this->email->from('Cermat Institute'); // change it to yours
+        $this->email->from('cermatinstitute'); // change it to yours
         $this->email->to($email); // change it to yours
 
         $message = /* -----------email body starts----------- */
-                "Terima kasih telah mendaftar, " . $_POST['nama'] . "!
+                "Terima kasih telah mendaftar, " . $this->data['nama'] . "!
       
         
         Berikut detail akun anda:
         
-        Username   : " . $_POST['username'] . "
-        Password: " . $_POST['password'] . "
+        Username   : " . $this->data['username'] . "
+        Password: " . $this->input->post('password') . "
        
                         
         Klik link berikut untuk aktivasi akun anda:
             
         " . base_url() . "Berbayar/konfirmasi?" .
-                "email=" . $_POST['email'] . "&hash=" . $this->data['hash'];
+                "email=" .$email . "&hash=" . $this->data['hash'];
         /* -----------email body ends----------- */
 
 
@@ -132,8 +130,6 @@ class Berbayar extends MX_Controller {
         $result = $this->Mberbayar->get_hash_value($_GET['email']);
         if ($result) {
             foreach ($result as $value) {
-
-
                 if ($value->hash == $_GET['hash']) {
                     $this->Mberbayar->verify_user($_GET['email']);
                     redirect('Login');
