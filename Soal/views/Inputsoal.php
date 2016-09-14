@@ -1,8 +1,5 @@
 <?php $this->load->view('modular/header') ?>
-
 <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
-
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

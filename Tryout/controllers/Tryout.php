@@ -72,5 +72,9 @@ class Tryout extends CI_Controller {
         $this->Mtryout->hapusTransaksi($id);
         redirect(site_url('Tryout/tampilMapel/'.$data['id_tryout']));
     }
+    
+    function laporan($id){
+        $this->load->view('Laporan');
+    }
 
 }

@@ -127,7 +127,7 @@
                                                 }
                                                 ?></td>
                                             <td><a href="<?= site_url('Tryout/tampilMapel/' . $value->id_tryout); ?>" class="btn btn-default">Lihat</a></td>
-                                            <td><a data-toggle="modal" data-target="#update<?= $value->id_tryout ?>" class="btn btn-info"><i></i>Edit</a></td>
+                                            <td><a data-toggle="modal" data-target="#update<?= $value->id_tryout ?>" class="btn btn-info"><i></i>Edit</a>&nbsp;&nbsp;<a href="Tryout/laporan/<?= $value->id_tryout ?>" class="btn btn-primary">Laporan</a></td>
                                         </tr>
                                         <?php
                                     }
