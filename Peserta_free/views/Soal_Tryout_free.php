@@ -4,7 +4,10 @@
 <div class="content">
             <div class="container-fluid">
                 <div class="row">
-					<div class="col-md-6 col-md-offset-3">
+                  <!-- <div class="col-md-4">
+
+                  </div> -->
+					<div class="col-md-8 col-lg-8 col-sm-8 col-xs-8">
                         <div class="card">
                           <?php if (empty($nama_mapel) && empty($soal)): ?>
                             <div class="header text-center">
@@ -90,23 +93,40 @@
 
                                 </div>
                                 <hr>
-                                <div class="row">
+                                <div class="row numb">
                                     <div class="col-md-12">
                                       <ul class="pager">
-                                        <div class="col-md-8">
-                                          <li><a href="#" class="firstPage btn-warning">&laquo; First</a></li>
-                                          <li><a href="#" class="previousPage btn-warning">&lsaquo; Previous</a></li>
-                                          <!-- <li class="pageNumbers"></li> -->
-                                          <li><a href="#" class="nextPage btn-primary">Next &rsaquo;</a></li>
-                                          <li><a href="#" class="lastPage btn-primary">End&raquo;</a></li>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <li><button type="submit" class="btn btn-primary btn-fill btn-block" onclick="return confirm('Anda Yakin Ingin memproses Nilai?');"><i class="fa fa-check"></i> Selesai</button></li>
+                                        <div class="col-md-12">
+                                          <div style="font-size:30px; border-radius:5px;" class="bg-primary" align="center"><i class="fa fa-clock-o"></i>  | <span id="timer" style="font-weight:bolder;"></span> <small>menit</small></div>
+                                          <hr/>
+                                          <h4>Nomor Soal</h4>
+                                          <!-- <li><a href="#" class="firstPage btn-warning">&laquo; First</a></li>
+                                          <li><a href="#" class="previousPage btn-warning">&lsaquo; Previous</a></li> -->
+                                          <li class="pageNumbers"></li>
+                                          <!-- <li><a href="#" class="nextPage btn-primary">Next &rsaquo;</a></li>
+                                          <li><a href="#" class="lastPage btn-primary">End&raquo;</a></li> -->
+                                          <hr/>
+                                          <li><button type="submit" class="btn btn-primary btn-fill btn-lg btn-block" onclick="return confirm('Anda Yakin Ingin memproses Nilai?');"><i class="fa fa-check"></i> Selesai Mengerjakan</button></li>
                                         </div>
 
                                       </ul>
                                   </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                      <ul class="pager">
+                                        <div class="col-md-8">
+                                          <!-- <li><a href="#" class="firstPage btn-warning">&laquo; First</a></li> -->
+                                          <li><a href="#" class="previousPage btn-warning">&lsaquo; Previous</a></li>
+                                          <!-- <li class="pageNumbers"></li> -->
+                                          <li><a href="#" class="nextPage btn-primary">Next &rsaquo;</a></li>
+                                          <!-- <li><a href="#" class="lastPage btn-primary">End&raquo;</a></li> -->
+                                        </div>
+
+                                      </ul>
+                                  </div>
+                                </div>
+
                                 </form>
 
                               </div>
@@ -122,4 +142,4 @@
         </div>
 
 <!-- end modular -->
-<?php $this->load->view('PesertaModular/Free/Footer'); ?>
+<?php $this->load->view('PesertaModular/Free/Footer_soal'); ?>
