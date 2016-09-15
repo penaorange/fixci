@@ -58,6 +58,12 @@ class Peserta_free extends MX_Controller {
 		$this->load->view('Halaman_peserta_free');
 	}
 
+	function nilai_free(){
+	 $this->cek_session();
+	 $this->load->view('Nilai_free');
+ }
+
+
 	 function tryout_free(){
 		// $this->M_peserta->lihatPeserta($id, $data);
 		$this->cek_session();
