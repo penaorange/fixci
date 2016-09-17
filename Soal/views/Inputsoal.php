@@ -26,35 +26,39 @@
                     <?php } else { ?>
                         <h3 class="box-title">Soal ke <?= $jml->jumlah_soal + 1 ?></h3>
                         <hr>
-                    <?php
+                        <?php
                     }
                 }
                 ?>
-<?php echo form_open('Soal/tambahSoal'); ?>
-                <div class="col-lg-6">
+                <?php echo form_open('Soal/tambahSoal'); ?>
+                        <div class="col-lg-6"style="padding-top: 70px">
                     <textarea name="soal" id="editor1"></textarea>
                 </div>
                 <div class="form-group input-group col-lg-6" style="padding-top: 25px">
                     <div class="form-group input-group">
                         <span class="input-group-addon">A</span>
-                        <input name="pilihan_a" placeholder="Pilihan A" type="text" class="form-control" required> <br>
+                        <!--<input name="pilihan_a" placeholder="Pilihan A" type="text" class="form-control" required>-->
+                        <textarea name="pilihan_a" placeholder="Pilihan A" class="form-control"></textarea>
                     </div>
                     <div class="form-group input-group">
                         <span class="input-group-addon">B</span>
-                        <input name="pilihan_b" type="text" placeholder="Pilihan B" class="form-control" required>
+                        <!--<input name="pilihan_b" type="text" placeholder="Pilihan B" class="form-control" required>-->
+                        <textarea name="pilihan_b" placeholder="Pilihan B" class="form-control"></textarea>
                     </div>
                     <div class="form-group input-group">
                         <span class="input-group-addon">C</span>
-                        <input name="pilihan_c" type="text" placeholder="Pilihan C" class="form-control" required>
-
+                        <!--<input name="pilihan_c" type="text" placeholder="Pilihan C" class="form-control" required>-->
+                        <textarea name="pilihan_c" placeholder="Pilihan C" class="form-control"></textarea>
                     </div>
                     <div class="form-group input-group">
                         <span class="input-group-addon">D</span>
-                        <input name="pilihan_d" type="text" placeholder="Pilihan D" class="form-control" required>
+                        <!--<input name="pilihan_d" type="text" placeholder="Pilihan D" class="form-control" required>-->
+                        <textarea name="pilihan_d" placeholder="Pilihan D" class="form-control"></textarea>
                     </div>
                     <div class="form-group input-group">
                         <span class="input-group-addon">E</span>
-                        <input name="pilihan_e" type="text" placeholder="Pilihan E" class="form-control" required>
+                        <!--<input name="pilihan_e" type="text" placeholder="Pilihan E" class="form-control" required>-->
+                        <textarea name="pilihan_e" placeholder="Pilihan E" class="form-control"></textarea>
                     </div>
                     <div class="form-group input-group">
                         <span class="input-group-addon"><i class="fa fa-check"></i></span>
@@ -74,7 +78,7 @@
                     </div>
                 </div>
 
-<?php echo form_close(); ?>
+                <?php echo form_close(); ?>
             </div><!-- /.box-header -->
 
         </div>

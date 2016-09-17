@@ -50,11 +50,11 @@
                             <span class="input-group-addon"><i class="fa fa-check"></i></span>
                             <select class="form-control" name="jawaban_soal" required>
                                 <option>Jawaban Benar</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                                <option value="E">E</option>
+                                <option value="A">Pilihan A</option>
+                                <option value="B">Pilihan B</option>
+                                <option value="C">Pilihan C</option>
+                                <option value="D">Pilihan D</option>
+                                <option value="E">Pilihan E</option>
                             </select>
                         </div>
                         <div class="col-lg-offset-4">
