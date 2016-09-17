@@ -48,13 +48,14 @@ class Trial extends MX_Controller {
 
     function tampilPeserta() {
         $data['peserta'] = $this->Mtrial->tampilPeserta()->result();
-
         $this->load->view('Trial', $data);
     }
-
+    function data($id = null){
+        $peserta = $this->Mtrial->tampilDetail($id)->row();
+        echo json_encode($peserta);
+    }
     function ubahPeserta() {
         $id = $this->input->post('id');
-
         $data['nm_peserta'] = htmlspecialchars($this->input->post('nama'));
         $data['jenis_kelamin'] = htmlspecialchars($this->input->post('jeniskelamin'));
         $data['no_hp'] = htmlspecialchars($this->input->post('nohp'));
@@ -62,12 +63,9 @@ class Trial extends MX_Controller {
         $data['email'] = htmlspecialchars($this->input->post('email'));
         $data['konfirmasi'] = htmlspecialchars($this->input->post('konfirmasi'));
         $data['alamat'] = htmlspecialchars($this->input->post('alamat'));
-        $data['username'] = htmlspecialchars($this->input->post('username'));
-        $data['password'] = htmlspecialchars($this->input->post('password'));
+        $data['username'] = $this->input->post('username');
+        $data['password'] = $this->input->post('password');
         $data['id_kelompok_peserta'] = htmlspecialchars($this->input->post('kelompokpeserta'));
-
-
-
         $this->Mtrial->ubahPeserta($id, $data);
 //        $this->tampilPeserta();   
         redirect(site_url('Trial'));
@@ -127,9 +125,7 @@ class Trial extends MX_Controller {
         }
     }
 
-    function hapusPeserta() {
-        $id = $this->input->get('id');
-
+    function hapusPeserta($id) {
         $this->Mtrial->hapusPeserta($id);
         redirect(site_url('Trial'));
     }
