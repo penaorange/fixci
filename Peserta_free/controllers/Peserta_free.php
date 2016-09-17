@@ -58,6 +58,12 @@ class Peserta_free extends MX_Controller {
 		$this->load->view('Halaman_peserta_free');
 	}
 
+	function nilai_free(){
+	 $this->cek_session();
+	 $this->load->view('Nilai_free');
+ }
+
+
 	 function tryout_free(){
 		// $this->M_peserta->lihatPeserta($id, $data);
 		$this->cek_session();
@@ -102,13 +108,14 @@ function cekJawaban_free(){
 	// echo var_dump($result);
 	$benar=0;
 	$salah=0;
+	$kosong=0;
 	$koreksi=array();
 	$idSalah = array();
 	for ($i=0; $i <sizeOf($result) ; $i++) {
 				$id = $result[$i]['id_soal'];
 				// $data[$id];
 				if (!isset($data[$id])) {
-					$salah++;
+					$kosong++;
 					$koreksi[]=$result[$i]['id_soal'];
 					$idSalah[] = $i;
 				}else if($data[$id] == $result[$i]['jawaban_soal']){
@@ -119,14 +126,18 @@ function cekJawaban_free(){
 					$idSalah[] = $i;
 				}
 	}
+	$hasilnya['kosong'] = $kosong;
 	$hasilnya['salah'] = $salah;
 	$hasilnya['benar'] = $benar;
-	$hasilnya['total'] = $benar*10;
+	$hasilnya['total'] = ($benar*4)+($salah*-1)+($kosong*0);
 
 	$user = $this->session->userdata('user_data');
 	$nilai['id_peserta'] = $user['id_peserta'];
-	$nilai['id_transaksi'] = $idTrans;
-	$nilai['id_prodi'] = '1';
+	$nilai['id_tryout'] = $idTo;
+	$nilai['id_mapel'] = $idMapel;
+	// $nilai['id_transaksi'] = $idTrans;
+	// $nilai['id_prodi'] = '1';
+	$nilai['jmlh_kosong'] = $hasilnya['kosong'];
 	$nilai['jmlh_benar'] = $hasilnya['benar'];
 	$nilai['jmlh_salah'] = $hasilnya['salah'];
 	$nilai['total_nilai'] = $hasilnya['total'];
