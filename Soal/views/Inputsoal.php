@@ -1,4 +1,9 @@
 <?php $this->load->view('modular/header') ?>
+<style>
+    #pertanyaan{
+        padding-top: 10px;
+    }
+</style>
 <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -30,8 +35,9 @@
                     }
                 }
                 ?>
-                <?php echo form_open('Soal/tambahSoal'); ?>
-                        <div class="col-lg-6"style="padding-top: 70px">
+                <?php echo form_open('Soal/tambahSoal'); ?>                
+                <div class="col-lg-6" id="pertanyaan">
+                    <h3>Pertanyaan</h3>                
                     <textarea name="soal" id="editor1"></textarea>
                 </div>
                 <div class="form-group input-group col-lg-6" style="padding-top: 25px">

@@ -26,7 +26,7 @@
             <div class="box-header">
                 <h3 class="box-title">Daftar Mata Pelajaran</h3>
                 <div class="pull-right">
-                    <a data-toggle="modal" class="btn btn-default"  data-target="#tambahMapel">Tambah</a>
+                    <a data-toggle="modal" class="btn btn-primary"  data-target="#tambahMapel">Tambah</a>
                     <div class="modal fade" id="tambahMapel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -217,7 +217,7 @@
             }
         });
     }
-    $('.alert').fadeOut(3500,'linear');
+    $('.alert').fadeOut(1500,'linear');
     
 </script>
 

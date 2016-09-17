@@ -1,4 +1,9 @@
 <?php $this->load->view('modular/header') ?>
+<style>
+    #pertanyaan{
+        padding-top: 10px
+    }
+</style>
 <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -21,30 +26,36 @@
                 <?php $idSoal = $this->uri->segment(3); ?>
                 <?php echo form_open('Soal/editSoal/' . $idSoal); ?>
                 <?php foreach ($soal as $data): ?>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" id="pertanyaan">
+                        <h3>Pertanyaan</h3>
                         <textarea name="soal" id="editor1"><?= $data->soal ?></textarea>
                         <br>
                     </div>
-                <div class="form-group input-group col-lg-6" style="padding-top: 25px">
+                    <div class="form-group input-group col-lg-6" style="padding-top: 25px">
                         <div class="form-group input-group">
                             <span class="input-group-addon">A</span>
-                            <input name="pilihan_a" placeholder="Pilihan A" type="text" value="<?= $data->pilihan_a ?>" class="form-control" required> <br>
+                            <!--<input name="pilihan_a" placeholder="Pilihan A" type="text" value="<?= $data->pilihan_a ?>" class="form-control" required>-->
+                            <textarea name="pilihan_a" class="form-control"><?= $data->pilihan_a; ?></textarea>
                         </div>
                         <div class="form-group input-group">
                             <span class="input-group-addon">B</span>
-                            <input name="pilihan_b" type="text" placeholder="Pilihan B" value="<?= $data->pilihan_b ?>" class="form-control" required>
+                            <!--<input name="pilihan_b" type="text" placeholder="Pilihan B" value="<?= $data->pilihan_b ?>" class="form-control" required>-->
+                            <textarea name="pilihan_b" class="form-control"><?= $data->pilihan_b; ?></textarea>
                         </div>
                         <div class="form-group input-group">
                             <span class="input-group-addon">C</span>
-                            <input name="pilihan_c" type="text" placeholder="Pilihan C" value="<?= $data->pilihan_c ?>" class="form-control" required>
+                            <!--<input name="pilihan_c" type="text" placeholder="Pilihan C" value="<?= $data->pilihan_c ?>" class="form-control" required>-->
+                            <textarea name="pilihan_c" class="form-control"><?= $data->pilihan_c; ?></textarea>
                         </div>
                         <div class="form-group input-group">
                             <span class="input-group-addon">D</span>
-                            <input name="pilihan_d" type="text" placeholder="Pilihan D" value="<?= $data->pilihan_d ?>" class="form-control" required>
+                            <!--<input name="pilihan_d" type="text" placeholder="Pilihan D" value="<?= $data->pilihan_d ?>" class="form-control" required>-->
+                            <textarea name="pilihan_d" class="form-control"><?= $data->pilihan_d; ?></textarea>
                         </div>
                         <div class="form-group input-group">
                             <span class="input-group-addon">E</span>
-                            <input name="pilihan_e" type="text" placeholder="Pilihan E" value="<?= $data->pilihan_e ?>" class="form-control" required>
+                            <!--<input name="pilihan_e" type="text" placeholder="Pilihan E" value="<?= $data->pilihan_e ?>" class="form-control" required>-->
+                            <textarea name="pilihan_e" class="form-control"><?= $data->pilihan_e; ?></textarea>
                         </div>
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-check"></i></span>
@@ -62,14 +73,14 @@
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </div>
-            </div>
-                    <input name="id_soal" type="hidden" value="<?= $data->id_soal ?>">
-                    <input name="id_mapel" type="hidden" value="<?= $data->id_mapel ?>">
-                <?php endforeach; ?>
-                <?php echo form_close(); ?>
-            </div><!-- /.box-header -->
-        </div>
-    </section><!-- /.content -->
+                </div>
+                <input name="id_soal" type="hidden" value="<?= $data->id_soal ?>">
+                <input name="id_mapel" type="hidden" value="<?= $data->id_mapel ?>">
+            <?php endforeach; ?>
+            <?php echo form_close(); ?>
+        </div><!-- /.box-header -->
+</div>
+</section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 <?php $this->load->view('modular/footer') ?>
 <script>

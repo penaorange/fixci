@@ -26,6 +26,7 @@
                             
                     ?> - </h3>
                 <small> Kode Soal : <?php   echo $value->id_mapel;  }?></small>
+                <a href="<?= site_url("Soal") ?>" class="btn btn-info pull-right">Kembali</a>
                 <hr>
                 <table id="example" class="table table-bordered table-striped" style="text-align: center">
                         <thead>
@@ -63,7 +64,7 @@
                             ?>
                         </tbody>
                     </table>
-                        <a href="<?= site_url("Soal") ?>" class="btn btn-default pull-right">Kembali</a>
+                        <a href="<?= site_url("Soal") ?>" class="btn btn-info pull-right">Kembali</a>
             </div><!-- /.box-header -->
 
         </div>
