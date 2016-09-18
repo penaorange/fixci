@@ -20,6 +20,10 @@ class Bimbel extends MX_Controller {
             redirect(site_url('Login'));
         }
     }
+    function data($id = null){
+        $peserta = $this->Mbimbel->tampilDetail($id)->row();
+        echo json_encode($peserta);
+    }
 
     function tambahPeserta() {
     	
@@ -124,9 +128,7 @@ class Bimbel extends MX_Controller {
         redirect(site_url('Bimbel'));
     }
 
-    function hapusPeserta() {
-        $id = $this->input->get('id');
-
+    function hapusPeserta($id) {
         $this->Mbimbel->hapusPeserta($id);
         redirect(site_url('Bimbel'));
     }

@@ -45,6 +45,10 @@ class Berbayar extends MX_Controller {
 
         redirect(site_url('Berbayar'));
     }
+    function data($id = null){
+        $peserta = $this->Mberbayar->tampilDetail($id)->row();
+        echo json_encode($peserta);
+    }
 
     function tampilPeserta() {
         $data['peserta'] = $this->Mberbayar->tampilPeserta()->result();
@@ -71,9 +75,7 @@ class Berbayar extends MX_Controller {
         redirect(site_url('Berbayar'));
     }
 
-    function hapusPeserta() {
-        $id = $this->input->get('id');
-
+    function hapusPeserta($id) {
         $this->Mberbayar->hapusPeserta($id);
         redirect(site_url('Berbayar'));
     }
