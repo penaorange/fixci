@@ -32,7 +32,7 @@ class Model_free extends CI_Model {
 	}
 
 	public function select_detail_tryout($id_try, $id_kk, $id_kp){
-		$this->db->select('id_transaksi, tb_tryout.id_tryout, tb_mapel.id_mapel, nm_mapel, jml_soal,waktu');
+		$this->db->select('id_transaksi, tb_tryout.id_tryout, tb_mapel.id_mapel, nm_mapel, jml_soal, waktu');
 		$this->db->from('tb_transaksi_to_mapel');
 		$this->db->JOIN('tb_mapel','tb_mapel.id_mapel = tb_transaksi_to_mapel.id_mapel');
 		$this->db->JOIN('tb_tryout','tb_transaksi_to_mapel.id_tryout = tb_tryout.id_tryout');
