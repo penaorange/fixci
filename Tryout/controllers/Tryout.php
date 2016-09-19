@@ -70,11 +70,24 @@ class Tryout extends CI_Controller {
         $id = $this->input->get('id');
         $data['id_tryout'] = $this->input->post('id_tryout');
         $this->Mtryout->hapusTransaksi($id);
-        redirect(site_url('Tryout/tampilMapel/'.$data['id_tryout']));
+        redirect(site_url('Tryout/tampilMapel/' . $data['id_tryout']));
     }
-    
-    function laporan($id){
+
+    function laporan($id) {
         $this->load->view('Laporan');
+    }
+
+    public function excelfiles() {
+        $this->load->library('excel/Biffwriter');
+        $this->load->library('excel/Format');
+        $this->load->library('excel/OLEwriter');
+        $this->load->library('excel/Parser');
+        $this->load->library('excel/Workbook');
+        $this->load->library('excel/Worksheet');
+        
+        $res['data'] = $this->Mtryout->laporan()->result();
+
+        $this->load->view('excelfiles', $res);
     }
 
 }
