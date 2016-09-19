@@ -18,55 +18,7 @@
             <div class="box-header">
                 <h3 class="box-title">Daftar Try Out</h3>
                 <div class="pull-right">
-                    <!--<a href = "#" type="button"  data-toggle="modal" data-target="#myModal"><span class=" fa fa-plus"></span></a>-->
-                    <!--<a data-toggle="modal" class="btn btn-default"  data-target="#myModal">Tambah</a>-->
-                    <!-- Modal -->
-                </div>
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Tambah Try Out</h4>
-                            </div>
-
-                            <form action="<?= site_url('Tryout/tambahTryout') ?>" method="post">
-                                <div class="modal-body">
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon"><i class="fa fa-adn"></i></span>
-                                        <input name="nm_to" type="text" class="form-control" placeholder="Nama Tryout" required> <br>
-                                    </div>
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input name="tanggal" type="date" min="<?= date('Y-m-d'); ?>" class="form-control" placeholder="tahun/bulan/tanggal" required> <br>
-                                    </div>
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon"><i class="fa fa-unlock-alt"></i></span>
-                                        <select class="form-control" name="jenis_to">
-                                            <option> Pilih Jenis TO</option>
-                                            <option value="1">TRIAL</option>
-                                            <option value="2">BERBAYAR</option>
-                                            <option value="3">BIMBEL</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon"><i class="fa fa-users"></i></span>                                
-                                        <select class="form-control" name="kelompokujian">
-                                            <option> Pilih Kelompok Ujian</option>
-                                            <option value="1">IPA</option>
-                                            <option value="2">IPS</option>
-                                            <option value="3">IPC</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Ya</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
+                    <a  href="<?= base_url()?>Tryout/excelfiles"class="btn btn-info">Ekspor Excel</a>
                 </div>
             </div>
             <!-- /.box-header -->
