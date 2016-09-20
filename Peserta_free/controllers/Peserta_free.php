@@ -5,7 +5,6 @@ class Peserta_free extends MX_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//$this->load->library('l_admin');
 		$this->load->helper('url');
 		$this->load->model('Model_free');
 		$this->load->library('pagination');
@@ -44,7 +43,6 @@ class Peserta_free extends MX_Controller {
 
 	}
 
-
 	function profil_free(){
 		$this->cek_session();
 		$user = $this->session->userdata('user_data');
@@ -65,7 +63,6 @@ class Peserta_free extends MX_Controller {
 
 
 	 function tryout_free(){
-		// $this->M_peserta->lihatPeserta($id, $data);
 		$this->cek_session();
 		$user = $this->session->userdata('user_data');
 		$id['to_kk']=$user['id_kelompok_keilmuan'];
