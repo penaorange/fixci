@@ -25,7 +25,7 @@ class Model_free extends CI_Model {
     }
 
     public function select_tryout($id) {
-        $this->db->select('id_tryout', 'nm_tryout', 'tgl_to');
+        $this->db->select('*');
         $this->db->from('tb_tryout');
         $this->db->where($id);
         $this->db->order_by('id_tryout', "desc");
