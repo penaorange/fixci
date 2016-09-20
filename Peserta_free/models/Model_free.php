@@ -70,11 +70,12 @@ class Model_free extends CI_Model {
         $this->db->insert('tb_jawaban', $nilai);
     }
 
-    function lihatNilai($nilai) {
-        $this->db->select('*');
-        $this->db->from('tb_jawaban');
-        $this->db->where($nilai);
-    }
+	function lihatNilai($data){
+		$this->db->select('*');
+    $this->db->from('tb_jawaban');
+		$this->db->where($data);
+		return $this->db->get();
+	}
 
     public function insertPeserta($data) {
         $this->db->insert('peserta', $data);

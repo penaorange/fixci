@@ -25,7 +25,13 @@
                               <a class="list-group-item" data-toggle="modal" data-target="#modalDetail"
                                  data-id="<?php echo $key->id_mapel;?>" data-idtrans="<?php echo $key->id_transaksi;?>" data-idto="<?php echo $key->id_tryout;?>" data-nama="<?php echo $key->nm_mapel;?>"
                                  data-jumlah="<?php echo $key->jml_soal;?>" data-waktu="<?php echo $key->waktu;?>">
-                                    <h4 class="list-group-item-heading"><i class="fa fa-circle text-info"></i> <?php echo $key->nm_mapel; ?></h4>
+                                    <h4 class="list-group-item-heading"><i class="fa fa-circle
+                                      <?php foreach ($hasil_nilai as $hasil): ?>
+                                        <?php if ($hasil->id_mapel == $key->id_mapel): ?>
+                                          text-danger
+                                        <?php endif; ?>
+                                      <?php endforeach; ?>
+                                      "></i> <?php echo $key->nm_mapel; ?></h4>
                                   </a>
 
                             <?php endforeach; ?>
@@ -70,6 +76,7 @@
                                             <input type="hidden" name="id" id="id" />
                                             <input type="hidden" name="idTo" id="idTo" />
                                             <input type="hidden" name="idTrans" id="idtrans" />
+                                            <input type="hidden" name="waktu" id="waktu" />
                                             <div class="form-group">
                                               <div class="input-group">
                                                 <div class="input-group-addon">Mata Pelajaran</div>

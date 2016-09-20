@@ -24,6 +24,7 @@
                             </div>
                           <?php else: ?>
                             <div class="header text-center">
+
                                 <h4 class="title"><?php echo $nama_mapel->nm_mapel; ?></h4>
                                 <p class="category">Kerjakan soal berikut dengan benar</p>
 								                        <hr/>
