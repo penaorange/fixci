@@ -14,8 +14,8 @@
           </div>
       </div>
 
-      <div class="paginateTryout">
-        <div class="item">
+      <div class="paginate">
+        <div class="items">
 
         <?php foreach ($tryout as $key): ?>
           <div class="konten">
@@ -41,26 +41,28 @@
                             </div>
                         </div>
                     </div>
+
+
           </div>
        <?php endforeach; ?>
 
       </div>
 
-          <div class="row">
-              <div class="col-md-12">
-                <ul class="pager">
+              <div class="row">
                   <div class="col-md-12">
-                    <li><a href="#" class="firstPage btn-warning">&laquo; First</a></li>
-                    <li><a href="#" class="previousPage btn-warning">&lsaquo; Previous</a></li>
-                    <li class="pageNumbers"></li>
-                    <li><a href="#" class="nextPage btn-primary">Next &rsaquo;</a></li>
-                    <li><a href="#" class="lastPage btn-primary">End&raquo;</a></li>
-                    <hr/>
-                  </div>
+                    <ul class="pager">
+                      <div class="col-md-12">
+                        <li><a href="#" class="firstPage btn-warning">&laquo; First</a></li>
+                        <li><a href="#" class="previousPage btn-warning">&lsaquo; Previous</a></li>
+                        <li class="pageNumbers"></li>
+                        <li><a href="#" class="nextPage btn-primary">Next &rsaquo;</a></li>
+                        <li><a href="#" class="lastPage btn-primary">End&raquo;</a></li>
+                        <hr/>
+                      </div>
 
-                </ul>
-            </div>
-          </div>
+                    </ul>
+                </div>
+              </div>
 
         </div>
 
