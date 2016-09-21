@@ -4,7 +4,7 @@
 <div class="content">
     <div class="container-fluid">
       <div class="row">
-          <div class="col-sm-8 col-md-8 col-md-offset-2">
+          <div class="col-sm-12 col-md-12">
               <div class="card">
                   <div class="header">
                       <h4 class="title">Pilih Mata Pelajaran</h4>
@@ -12,7 +12,7 @@
                   </div>
                   <div class="content all-icons">
                       <div class="row">
-                        <div class="col-sm-8 col-md-8 col-md-offset-2">
+                        <div class="col-sm-12 col-md-12">
 
 
                         <div class="list-group">
@@ -22,11 +22,26 @@
                             </div>
                           <?php else: ?>
                             <?php foreach ($detail_tryout as $key): ?>
-                              <a class="list-group-item" data-toggle="modal" data-target="#modalDetail"
+
+                              <!-- <a class="list-group-item btn" data-toggle="modal" data-target="#modalDetail"
                                  data-id="<?php echo $key->id_mapel;?>" data-idtrans="<?php echo $key->id_transaksi;?>" data-idto="<?php echo $key->id_tryout;?>" data-nama="<?php echo $key->nm_mapel;?>"
-                                 data-jumlah="<?php echo $key->jml_soal;?>" data-waktu="<?php echo $key->waktu;?>">
-                                    <h4 class="list-group-item-heading"><i class="fa fa-circle text-info"></i> <?php echo $key->nm_mapel; ?></h4>
-                                  </a>
+                                 data-jumlah="<?php echo $key->jml_soal;?>" data-waktu="<?php echo $key->waktu;?>" <?php foreach ($hasil_nilai as $hasil): ?><?php if ($hasil->id_mapel == $key->id_mapel): ?>disabled<?php endif; ?><?php endforeach; ?>>
+                                <h4 class="list-group-item-heading"><i class="fa fa-circle"></i> <?php echo $key->nm_mapel; ?></h4>
+                              </a> -->
+
+                              <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                  <div class="panel-body">
+                                      <p><i class="fa fa-pencil-square" style="color:#428bca;"></i> <b><?php echo $key->nm_mapel; ?></b></p>
+                                  </div>
+                                  <div class="panel-footer">
+                                    <button type="button" class="btn btn-primary btn-fill btn-block <?php foreach ($hasil_nilai as $hasil): ?><?php if ($hasil->id_mapel == $key->id_mapel): ?>btn-warning<?php endif; ?><?php endforeach;?>" data-toggle="modal" data-target="#modalDetail"
+                                       data-id="<?php echo $key->id_mapel;?>" data-idtrans="<?php echo $key->id_transaksi;?>" data-idto="<?php echo $key->id_tryout;?>" data-nama="<?php echo $key->nm_mapel;?>"
+                                       data-jumlah="<?php echo $key->jml_soal;?>" data-waktu="<?php echo $key->waktu;?>" <?php foreach ($hasil_nilai as $hasil): ?><?php if ($hasil->id_mapel == $key->id_mapel): ?>disabled<?php endif; ?><?php endforeach;?>>Detail <i class="fa fa-arrow-right"></i></button>
+                                  </div>
+                                </div>
+                              </div>
+
 
                             <?php endforeach; ?>
                           <?php endif; ?>
@@ -70,6 +85,7 @@
                                             <input type="hidden" name="id" id="id" />
                                             <input type="hidden" name="idTo" id="idTo" />
                                             <input type="hidden" name="idTrans" id="idtrans" />
+                                            <input type="hidden" name="waktu" id="waktu" />
                                             <div class="form-group">
                                               <div class="input-group">
                                                 <div class="input-group-addon">Mata Pelajaran</div>
@@ -100,4 +116,4 @@
                                       </form>
                                     </div><!-- /.modal-content -->
                                   </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
+</div><!-- /.modal -->
