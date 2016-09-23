@@ -58,7 +58,11 @@ class Peserta_free extends MX_Controller {
 
 	function nilai_free(){
 	 $this->cek_session();
-	 $this->load->view('Nilai_free');
+	 $user = $this->session->userdata('user_data');
+	 $id['id_peserta']=$user['id_peserta'];
+	 $data['nilai'] = $this->Model_free->select_nilai_tryout($id)->result();
+	 // $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
+	 $this->load->view('Nilai_free', $data);
  }
 
 
