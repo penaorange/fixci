@@ -24,6 +24,7 @@
                             </div>
                           <?php else: ?>
                             <div class="header text-center">
+
                                 <h4 class="title"><?php echo $nama_mapel->nm_mapel; ?></h4>
                                 <p class="category">Kerjakan soal berikut dengan benar</p>
 								                        <hr/>
@@ -32,7 +33,7 @@
 
                               <div class="paginate pagination pagination-lg">
                                 <div class="items">
-                                <form action="<?php echo site_url('cek-TO-free') ?>" method="post" id="hasil" onsubmit="return deleteAllCookies()">
+                                <form action="<?php echo site_url('cek-TO-free') ?>" method="post" id="hasil" onsubmit="return deleteAllCookies('seconds', 'minutes')">
                                   <input type="hidden" name="idTrans" value="<?php echo $idTrans; ?>" />
                                   <input type="hidden" name="idMapel" value="<?php echo $mapel_id; ?>" />
                                   <input type="hidden" name="idTo" value="<?php echo $to_id; ?>" />
