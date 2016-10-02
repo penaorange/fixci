@@ -38,11 +38,28 @@ class Mdashboard extends CI_Model {
         $this->db->from('tb_tryout');
         return $this->db->get();
     }
-    
-    public function dataAdmin() {
-        $this->db->select('*');
-        $this->db->from('tb_admin');
-        return $this->db->get();
+
+    public function dataAdmin($id) {
+        if (isset($id)) {
+            $this->db->select('*');
+            $this->db->where('id_admin', $this->session->userdata('id_admin'));
+            $this->db->from('tb_admin');
+            return $this->db->get();
+        } else {
+            redirect(base_url('Error'));
+        }
+    }
+
+    public function ubahData($id_admin, $passwordlama, $data) {
+        $this->db->where('id_admin', $id_admin);
+        $this->db->where('password', $passwordlama);
+        $this->db->update('tb_admin', $data);
+
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('notif', 'Data admin telah dirubah');
+        } else {
+            $this->session->set_flashdata('notif', 'Data gagal dirubah');
+        }
     }
 
 }

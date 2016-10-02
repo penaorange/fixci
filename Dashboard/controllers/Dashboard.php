@@ -20,9 +20,25 @@ class Dashboard extends MX_Controller {
     }
 
     function adminprofil() {
-//        echo 'laman admin';
-        $data['admin'] = $this->Mdashboard->dataAdmin()->result();
-        $this->load->view('adminProfil',$data);
+        $id = $this->session->userdata('id_admin');
+        if (isset($id)) {
+            $data['admin'] = $this->Mdashboard->dataAdmin($id)->result();
+            $this->load->view('adminProfil', $data);
+        } else {
+            redirect(base_url('Error'));
+        }
+    }
+
+    public function rubahPassword() {
+        $id_admin = $this->session->userdata('id_admin');
+        $passwordlama = md5(htmlspecialchars($this->input->post('oldpassword')));
+        
+        $data['username'] = htmlspecialchars($this->input->post('username'));
+        $data['password'] = md5(htmlspecialchars($this->input->post('newpassword')));
+        
+        $this->Mdashboard->ubahData($id_admin, $passwordlama, $data);
+
+        redirect(base_url('index.php/Dashboard/adminprofil'));
     }
 
 }

@@ -66,10 +66,13 @@ class Login extends MX_Controller {
         if (empty($data['username']) || empty($data['password'])) {
             redirect(site_url('Login'));
         }
+        
         $where['username'] = $data['username'];
+        $where['password'] = md5($data['password']);
         $admin = $this->Model_login->get_admin($where)->row_array();
         // $this->Model_login->insertPeserta($this->data);
-
+        $this->session->set_userdata('id_admin', $admin['id_admin']);
+      
         if (!$admin) {
             $this->session->set_flashdata('notif', 'Wrong Username And password.');
             redirect(site_url('admin'));
@@ -85,6 +88,7 @@ class Login extends MX_Controller {
             }
             unset($admin['password']);
             $this->session->set_userdata('admin_data', $admin);
+            
             redirect(site_url('Dashboard'));
         }
     }
@@ -112,6 +116,7 @@ class Login extends MX_Controller {
         $this->session->unset_userdata('user_data');
         $this->session->unset_userdata('admin_data');
         $this->session->unset_userdata('user_daftar');
+        session_destroy();
         $this->session->set_flashdata('terimakasih', 'You have been logged out.');
         redirect(site_url('Login'));
     }
