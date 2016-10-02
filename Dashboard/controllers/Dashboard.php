@@ -16,8 +16,13 @@ class Dashboard extends MX_Controller {
         $data['totalpesertaBerbayar'] = $this->Mdashboard->jumlahPesertaBerbayar()->result();
         $data['totalpesertaBimbel'] = $this->Mdashboard->jumlahPesertaBimbel()->result();
         $data['totaltryout'] = $this->Mdashboard->jumlahTryout()->result();
-        
         $this->load->view('Dashboard', $data);
+    }
+
+    function adminprofil() {
+//        echo 'laman admin';
+        $data['admin'] = $this->Mdashboard->dataAdmin()->result();
+        $this->load->view('adminProfil',$data);
     }
 
 }

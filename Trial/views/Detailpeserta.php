@@ -300,15 +300,8 @@
                             </select>
                         </div>
 
-
                         <input name="username" type="hidden" class="form-control"  placeholder="Username" value="<?= $value->username ?>" required>
-
-
-
-
                         <input name="password" type="hidden" class="form-control"  placeholder="Password" required value="<?= $value->password ?>">
-
-
 
                     </div>
                     <div class="modal-footer">

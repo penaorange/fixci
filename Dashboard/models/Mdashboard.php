@@ -28,7 +28,7 @@ class Mdashboard extends CI_Model {
 
     public function jumlahPesertaBimbel() {
         $this->db->select('COUNT(id_peserta) as total');
-        $this->db->where('id_kelompok_peserta', 2);
+        $this->db->where('id_kelompok_peserta', 3);
         $this->db->from('tb_peserta');
         return $this->db->get();
     }
@@ -36,6 +36,12 @@ class Mdashboard extends CI_Model {
     public function jumlahTryout() {
         $this->db->select('COUNT(id_tryout) as total');
         $this->db->from('tb_tryout');
+        return $this->db->get();
+    }
+    
+    public function dataAdmin() {
+        $this->db->select('*');
+        $this->db->from('tb_admin');
         return $this->db->get();
     }
 
