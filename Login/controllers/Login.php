@@ -71,7 +71,7 @@ class Login extends MX_Controller {
         // $this->Model_login->insertPeserta($this->data);
 
         if (!$admin) {
-            $this->session->set_flashdata('notif', 'Wrong Username And password.');
+            $this->session->set_flashdata('notif', 'Username Atau Password Salah.');
             redirect(site_url('admin'));
             return false;
             //echo "Username Tidak Ditemukan!"
@@ -79,7 +79,7 @@ class Login extends MX_Controller {
             // $this->twig->render('content/profile', $userLevel);
         } else {
             if ($admin['password'] != md5($data['password'])) {
-                $this->session->set_flashdata('notif', 'The password you entered is incorrect. Please enter again.');
+                $this->session->set_flashdata('notif', 'Password Salah. Silahkan Coba Lagi.');
                 redirect(site_url('admin'));
                 return false;
             }
@@ -112,7 +112,7 @@ class Login extends MX_Controller {
         $this->session->unset_userdata('user_data');
         $this->session->unset_userdata('admin_data');
         $this->session->unset_userdata('user_daftar');
-        $this->session->set_flashdata('terimakasih', 'You have been logged out.');
+        $this->session->set_flashdata('terimakasih', 'Anda Telah Keluar Dari Aplikasi.');
         redirect(site_url('Login'));
     }
 
@@ -134,13 +134,13 @@ class Login extends MX_Controller {
         $data['password'] = md5($data['password']);
         unset($data['password2']);
         if (strlen($data['password']) >= 100) {
-            $this->session->set_flashdata('notif-daftar', 'Failed. please try again');
+            $this->session->set_flashdata('notif-daftar', 'Gagal. Silahkan Coba Lagi');
             redirect(site_url('Daftar'));
             return false;
         }
         $user = $this->Model_login->insertPeserta($data);
         if (!$user) {
-            $this->session->set_flashdata('notif-daftar', 'Failed Processing Data. Try Again');
+            $this->session->set_flashdata('notif-daftar', 'Gagal Memroses Data. Coba Lagi');
             redirect(site_url('Daftar'));
             return false;
         }
@@ -150,7 +150,7 @@ class Login extends MX_Controller {
         $this->session->set_userdata('user_daftar', $daftar);
 
         $this->sendMail($data['email'], $data['hash']);
-        $this->session->set_flashdata('terimakasih', 'Account Successfully Created. Please Check Email To Activate.');
+        $this->session->set_flashdata('terimakasih', 'Akun Berhasil Dibuat. Untuk Mengaktifkan, Cek E-mail.');
         redirect(site_url('Login'));
     }
 
@@ -161,7 +161,7 @@ class Login extends MX_Controller {
         //query  database
         $user = $this->Model_login->mail_username_validation($mail, $username)->result();
         if ($user) {
-            $this->session->set_flashdata('notif-daftar', 'email Or Username is Already Exist!');
+            $this->session->set_flashdata('notif-daftar', 'Email Atau Username Sudah Ada!');
             redirect(site_url('Daftar'));
             return FALSE;
         } else {
@@ -188,16 +188,16 @@ class Login extends MX_Controller {
 
         $message = /* -----------email body starts----------- */
                 "Terima kasih telah mendaftar, " . $this->data['nama'] . "!
-      
-        
+
+
         Berikut detail akun anda:
-        
+
         Username   : " . $this->data['username'] . "
         Password: " . $this->input->post('password') . "
-       
-                        
+
+
         Klik link berikut untuk aktivasi akun anda:
-            
+
         " . base_url() . "Trial/konfirmasi?" .
                 "email=" . $email . "&hash=" . $hash;
         /* -----------email body ends----------- */
@@ -215,10 +215,10 @@ class Login extends MX_Controller {
             foreach ($result as $value) {
                 if ($value->hash == $_GET['hash']) {
                     $this->Model_login->verify_user($_GET['email']);
-                    $this->session->set_flashdata('terimakasih', 'Account is Actived!');
+                    $this->session->set_flashdata('terimakasih', 'Akun Anda Telah Aktif!');
                     redirect('Login');
                 } else {
-                    $this->session->set_flashdata('notif', 'Failed Verification!');
+                    $this->session->set_flashdata('notif', 'Gagal Verifikasi Data!');
                     redirect('Login');
                 }
             }

@@ -15,6 +15,20 @@
                         </span></h4>
                     </div>
                     <div class="content">
+                        <?php if ($this->session->flashdata('notif_gagal') != '') : ?>
+                          <div class="alert alert-danger">
+                            <p>
+                              <i class="fa fa-warning"></i> <?php echo $this->session->flashdata('notif_gagal'); ?>
+                            </p>
+                          </div>
+                        <?php elseif ($this->session->flashdata('notif_berhasil') != '') : ?>
+                          <div class="alert alert-info">
+                            <p>
+                              <i class="fa fa-check"></i> <?php echo $this->session->flashdata('notif_berhasil'); ?>
+                            </p>
+                          </div>
+                        <?php endif; ?>
+
                         <form>
                             <div class="row">
                                 <div class="col-md-3">
@@ -193,18 +207,18 @@
         <h4 class="modal-title text-white" id="myModalLabel" align="center">Ubah Password</h4>
       </div>
       <div class="modal-body">
-                <form action="<?php echo site_url('') ?>" method="post">
+                <form action="<?php echo site_url('ubah-password-free') ?>" method="post">
                         <div class="form-group">
                             <label>Password Lama</label>
-                            <input type="password" class="form-control" name="pass" placeholder="Password Lama">
+                            <input type="password" class="form-control" name="passLama" placeholder="Password Lama" required>
                         </div>
                         <div class="form-group">
                             <label>Password Baru</label>
-                            <input type="password" class="form-control" name="nm_peserta" placeholder="Password Baru">
+                            <input type="password" class="form-control" name="password" placeholder="Password Baru" required>
                         </div>
                         <div class="form-group">
                             <label>Konfirmasi Password Baru</label>
-                            <input type="password" class="form-control" name="nm_peserta" placeholder="Konfirmasi Password">
+                            <input type="password" class="form-control" name="passBaru" placeholder="Konfirmasi Password" required>
                         </div>
 
 
