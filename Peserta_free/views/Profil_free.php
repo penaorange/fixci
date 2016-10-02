@@ -9,8 +9,8 @@
                     <div class="header">
                         <h4 class="title">Edit Profile <span>
                           <div class="btn-group pull-right">
-                            <button type="button" class="btn btn-info btn-fill"><i class="fa fa-user"></i> Edit Profile</button>
-                            <button type="button" class="btn btn-warning btn-fill"><i class="fa fa-lock"></i> Ganti Password</button>
+                            <button type="button" class="btn btn-info btn-fill" data-toggle="modal" data-target="#modalProfile"><i class="fa fa-user"></i> Edit Profile</button>
+                            <button type="button" class="btn btn-warning btn-fill" data-toggle="modal" data-target="#modalPass"><i class="fa fa-lock"></i> Ganti Password</button>
                           </div>
                         </span></h4>
                     </div>
@@ -19,39 +19,35 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Kelompok (disabled)</label>
-                                        <input type="text" class="form-control" disabled placeholder="Kelompok Ujian" value="<?php if ($profil_lengkap->id_kelompok_keilmuan == '1') { echo 'IPA'; }
+                                        <label>Kelompok</label>
+                                        <input type="text" class="form-control text-black" value="<?php if ($profil_lengkap->id_kelompok_keilmuan == '1') { echo 'IPA'; }
                                         elseif ($profil_lengkap->id_kelompok_keilmuan == '2') { echo 'IPS'; } elseif
-                                         ($profil_lengkap->id_kelompok_keilmuan == '3') { echo 'IPC'; } ;?>">
+                                         ($profil_lengkap->id_kelompok_keilmuan == '3') { echo 'IPC'; } ;?>" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <label>Nama Lengkap</label>
-                                        <input type="text" class="form-control" placeholder="Nama Lengkap" value="<?php echo $profil_lengkap->nm_peserta; ?>">
+                                        <input type="text" class="form-control text-black" value="<?php echo $profil_lengkap->nm_peserta; ?>" readonly>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label>Jenis Kelamin</label>
-                                        <select class="form-control" name="jenis">
-                                          <?php if ($profil_lengkap->jenis_kelamin == 'pria'): ?>
-                                            <option value="pria">Laki-Laki</option>
-                                            <option value="wanita">Perempuan</option>
-                                            <?php else: ?>
-                                              <option value="wanita">Perempuan</option>
-                                              <option value="pria">Laki-Laki</option>
-                                          <?php endif; ?>
-                                        </select>
-                                    </div>
+                                  <div class="form-group">
+                                      <label>Jenis Kelamin</label>
+                                      <?php if ($profil_lengkap->jenis_kelamin == 'pria'): ?>
+                                          <input type="text" class="form-control text-black" value="Laki-Laki" readonly>
+                                        <?php else: ?>
+                                          <input type="text" class="form-control text-black" value="Perempuan" readonly>
+                                      <?php endif; ?>
+                                  </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <label>No.Telepon</label>
-                                        <input type="text" class="form-control" placeholder="No.Telepon" value="<?php echo $profil_lengkap->no_hp; ?>">
+                                        <input type="text" class="form-control text-black" value="<?php echo $profil_lengkap->no_hp; ?>" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +56,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Alamat</label>
-                                        <input type="text" class="form-control" placeholder="Alamat" value="<?php echo $profil_lengkap->alamat; ?>">
+                                        <input type="text" class="form-control text-black" value="<?php echo $profil_lengkap->alamat; ?>" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -69,19 +65,18 @@
                                 <div class="col-md-8">
                                   <div class="form-group">
                                       <label for="exampleInputEmail1">Email address</label>
-                                      <input type="email" class="form-control" placeholder="Email" value="<?php echo $profil_lengkap->email; ?>">
+                                      <input type="email" class="form-control text-black" value="<?php echo $profil_lengkap->email; ?>" readonly>
                                   </div>
                                 </div>
                                 <div class="col-md-4">
                                   <div class="form-group">
                                       <label for="exampleInputEmail1">Jenis Akun</label>
-                                      <input type="email" class="form-control" placeholder="Jenis Akun" value="<?php if ($profil_lengkap->id_kelompok_peserta == '1'){echo 'Trial';}
-                                      elseif($profil_lengkap->id_kelompok_peserta == '2'){echo 'Berbayar';}elseif($profil_lengkap->id_kelompok_peserta == '3'){echo 'Bimbel';}?>" disabled>
+                                      <input type="email" class="form-control text-black" value="<?php if ($profil_lengkap->id_kelompok_peserta == '1'){echo 'Trial';}
+                                      elseif($profil_lengkap->id_kelompok_peserta == '2'){echo 'Berbayar';}elseif($profil_lengkap->id_kelompok_peserta == '3'){echo 'Bimbel';}?>" readonly>
                                   </div>
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -94,20 +89,12 @@
                     </div>
                     <div class="content">
                         <div class="author">
-                             <a href="#">
                             <img class="avatar border-gray" src="<?php echo base_url() ?>assets/peserta/img/faces/face-8.jpg" alt="..."/>
-
-                              <h4 class="title"><?php echo $profil_lengkap->nm_peserta; ?><br />
-                              </h4>
-                            </a>
+                              <h4 class="title title-user"><?php echo $profil_lengkap->nm_peserta; ?> <i class="fa fa-circle text-success"></i></h4>
                         </div>
                     </div>
                     <hr>
                     <div class="text-center">
-                        <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                        <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                        <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
                     </div>
                 </div>
             </div>
@@ -118,3 +105,124 @@
 
 <!-- end modular -->
 <?php $this->load->view('PesertaModular/Free/Footer'); ?>
+
+<!-- Modal -->
+<div class="modal fade" id="modalProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" align="center">Ubah Profil</h4>
+      </div>
+      <div class="modal-body">
+                <form action="<?php echo site_url('ubah-profil-free') ?>" method="post">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label>Nama Lengkap</label>
+                                <input type="text" class="form-control" name="nm_peserta" placeholder="Nama Lengkap" value="<?php echo $profil_lengkap->nm_peserta; ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                             <div class="form-group">
+                                 <label>Jenis Kelamin</label>
+                                 <select class="form-control" name="jenis_kelamin">
+                                   <?php if ($profil_lengkap->jenis_kelamin == 'pria'): ?>
+                                     <option value="pria">Laki-Laki</option>
+                                     <option value="wanita">Perempuan</option>
+                                     <?php else: ?>
+                                       <option value="wanita">Perempuan</option>
+                                       <option value="pria">Laki-Laki</option>
+                                   <?php endif; ?>
+                                 </select>
+                             </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>No.Telepon</label>
+                                <input type="text" class="form-control" name="no_hp" placeholder="No.Telepon" value="<?php echo $profil_lengkap->no_hp; ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo $profil_lengkap->email; ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <input type="text" class="form-control" name="alamat" placeholder="Alamat" value="<?php echo $profil_lengkap->alamat; ?>">
+                            </div>
+                        </div>
+                    </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-3">
+              <button type="button" class="btn btn-danger btn-fill btn-block" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+            </div>
+            <div class="col-md-9">
+              <button type="submit" class="btn btn-primary btn-fill btn-block" onclick="return confirm('Anda Yakin Ingin Mengubah Profil?');"><i class="fa fa-pencil"></i> Ubah</button>
+            </div>
+
+            </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- modal password -->
+<div class="modal fade" id="modalPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-orange">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-white" id="myModalLabel" align="center">Ubah Password</h4>
+      </div>
+      <div class="modal-body">
+                <form action="<?php echo site_url('') ?>" method="post">
+                        <div class="form-group">
+                            <label>Password Lama</label>
+                            <input type="password" class="form-control" name="pass" placeholder="Password Lama">
+                        </div>
+                        <div class="form-group">
+                            <label>Password Baru</label>
+                            <input type="password" class="form-control" name="nm_peserta" placeholder="Password Baru">
+                        </div>
+                        <div class="form-group">
+                            <label>Konfirmasi Password Baru</label>
+                            <input type="password" class="form-control" name="nm_peserta" placeholder="Konfirmasi Password">
+                        </div>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-5">
+              <button type="button" class="btn btn-danger btn-fill btn-block" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+            </div>
+            <div class="col-md-7">
+              <button type="submit" class="btn btn-warning btn-fill btn-block" onclick="return confirm('Anda Yakin Ingin Mengubah Profil?');"><i class="fa fa-pencil"></i> Ubah</button>
+            </div>
+
+            </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

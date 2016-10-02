@@ -90,4 +90,8 @@ class Model_free extends CI_Model {
         $this->db->insert('peserta', $data);
     }
 
+    public function ubah_profil($data, $where) {
+      $this->db->update('tb_peserta', $data);
+    }
+
 }

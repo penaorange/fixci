@@ -51,6 +51,17 @@ class Peserta_free extends MX_Controller {
 		$this->load->view('Profil_free', $data_p);
 	}
 
+	function ubah_profil(){
+		$this->cek_session();
+		$user = $this->session->userdata('user_data');
+		$where['id_peserta'] = $user['id_peserta'];
+
+		$data = $this->input->post(null, true);
+
+		$simpanProfil = $this->Model_free->ubah_profil($data, $where);
+		redirect(site_url('profil-free'));
+	}
+
 	 function free(){
 		$this->cek_session();
 		$this->load->view('Halaman_peserta_free');
