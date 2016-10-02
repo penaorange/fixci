@@ -25,7 +25,8 @@ class Login extends MX_Controller {
     }
 
     function ceklogin() {
-        $data = $this->input->post(null, true);
+        $dataLogin = $this->input->post(null, true);
+        $data = html_escape($dataLogin);
         //jika tidak ada yang di inputkan ke dalam username/password
         if (empty($data['username']) || empty($data['password'])) {
             redirect(site_url('Login'));
