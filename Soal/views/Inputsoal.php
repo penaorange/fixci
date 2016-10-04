@@ -30,10 +30,14 @@
                     <?php } else { ?>
                         <h3 class="box-title">Soal ke <?= $jml->jumlah_soal + 1 ?></h3>
                         <hr>
-                        <?php }} ?>
-                <?php echo form_open('Soal/tambahSoal'); ?>                
+                        <?php
+                    }
+                }
+                ?>
+                <?php echo form_open_multipart('Soal/tambahSoal'); ?>     
                 <div class="col-lg-6" id="pertanyaan">
-                    <h3>Pertanyaan</h3>                
+                    <h3>Pertanyaan</h3>
+                    <label>Gambar</label> <input type="file" name="gambar" id="gambar">
                     <textarea name="soal" id="editor1"></textarea>
                 </div>
                 <div class="form-group input-group col-lg-6" style="padding-top: 25px">
@@ -84,6 +88,5 @@
 <script type="text/javascript" language="javascript">
     var base_url = $('#base-url').val();
     CKEDITOR.replace('editor1');
-
 </script>
 
