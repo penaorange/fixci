@@ -37,7 +37,7 @@
                 <?php echo form_open_multipart('Soal/tambahSoal'); ?>     
                 <div class="col-lg-6" id="pertanyaan">
                     <h3>Pertanyaan</h3>
-                    <label>Gambar</label> <input type="file" name="gambar" id="gambar">
+                    <label>Gambar</label><img id="preview" src="#"> <input type="file" name="gambar" id="gambar">
                     <textarea name="soal" id="editor1"></textarea>
                 </div>
                 <div class="form-group input-group col-lg-6" style="padding-top: 25px">
@@ -88,5 +88,22 @@
 <script type="text/javascript" language="javascript">
     var base_url = $('#base-url').val();
     CKEDITOR.replace('editor1');
+    
+    function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#preview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#gambar").change(function(){
+    readURL(this);
+});
 </script>
 
