@@ -1,7 +1,13 @@
 <?php $this->load->view('PesertaModular/Free/Header'); ?>
 <!-- start-modular -->
 
-<div class="content">
+<div class="loading_page" id="loadPage" align="center">
+  <i class="fa fa-refresh fa-spin fa-5x fa-fw"></i>
+  <span class="sr-only">Loading...</span>
+</div>
+
+<div class="content" id="profilPage">
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
@@ -104,7 +110,14 @@
                     <div class="content">
                         <div class="author">
                             <img class="avatar border-gray" src="<?php echo base_url() ?>assets/peserta/img/faces/face-8.jpg" alt="..."/>
-                              <h4 class="title title-user"><?php echo $profil_lengkap->nm_peserta; ?> <i class="fa fa-circle text-success"></i></h4>
+                              <h4 class="title title-user"><?php echo $profil_lengkap->nm_peserta; ?></h4>
+                              <hr/>
+                              <p class="text-success">
+                                <small>
+                                <i class="fa fa-circle-o text-success"></i>
+                                Online
+                                </small>
+                              </p>
                         </div>
                     </div>
                     <hr>
@@ -200,7 +213,7 @@
 
 <!-- modal password -->
 <div class="modal fade" id="modalPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog modal-sd" role="document">
     <div class="modal-content">
       <div class="modal-header bg-orange">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -213,12 +226,15 @@
                             <input type="password" class="form-control" name="passLama" placeholder="Password Lama" required>
                         </div>
                         <div class="form-group">
-                            <label>Password Baru</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password Baru" required>
+                            <label>Password Baru <small class="text-warning">(min. 5 - 20 Karakter)</small></label>
+                            <input type="password" id="passA" class="form-control" name="password" pattern=".{5,}" maxlength="20" placeholder="Password Baru" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group has-feedback" id="conPass">
                             <label>Konfirmasi Password Baru</label>
-                            <input type="password" class="form-control" name="passBaru" placeholder="Konfirmasi Password" required>
+                            <input type="password" id="passB" class="form-control" name="passBaru" pattern=".{5,}" maxlength="20" placeholder="Konfirmasi Password" required>
+                            <i class="fa form-control-feedback" id="passBenar" aria-hidden="true"></i>
+                            <!-- <i class="fa fa-times form-control-feedback text-danger" id="passSalah" aria-hidden="true"></i> -->
+
                         </div>
 
 
@@ -226,10 +242,10 @@
       </div>
       <div class="modal-footer">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
               <button type="button" class="btn btn-danger btn-fill btn-block" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
             </div>
-            <div class="col-md-7">
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">
               <button type="submit" class="btn btn-warning btn-fill btn-block" onclick="return confirm('Anda Yakin Ingin Mengubah Profil?');"><i class="fa fa-pencil"></i> Ubah</button>
             </div>
 

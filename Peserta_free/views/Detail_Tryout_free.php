@@ -66,9 +66,7 @@
 
 
 <!-- Modal -->
-
-
-                      <div class="modal fade modal-v2" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal fade modal-v2" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="col-md-3 modal-content-left">

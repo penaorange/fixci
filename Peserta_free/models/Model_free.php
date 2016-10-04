@@ -32,15 +32,6 @@ class Model_free extends CI_Model {
         return $this->db->get();
     }
 
-    public function select_nilai_tryout($id) {
-        $this->db->select('tb_tryout.nm_tryout, tb_tryout.tgl_to, tb_mapel.nm_mapel, tb_jawaban.jmlh_kosong, tb_jawaban.jmlh_benar, tb_jawaban.jmlh_salah, tb_jawaban.total_nilai');
-        $this->db->from('tb_jawaban');
-        $this->db->join('tb_tryout', 'tb_jawaban.id_tryout = tb_tryout.id_tryout');
-        $this->db->join('tb_mapel', 'tb_jawaban.id_mapel = tb_mapel.id_mapel');
-        $this->db->where($id);
-        return $this->db->get();
-    }
-
     public function select_detail_tryout($id_try, $id_kk, $id_kp) {
         $this->db->select('id_transaksi, tb_tryout.id_tryout, tb_mapel.id_mapel, nm_mapel, jml_soal,waktu');
         $this->db->from('tb_transaksi_to_mapel');
@@ -86,9 +77,9 @@ class Model_free extends CI_Model {
 		return $this->db->get();
 	}
 
-    public function insertPeserta($data) {
-        $this->db->insert('peserta', $data);
-    }
+    // public function insertPeserta($data) {
+    //     $this->db->insert('peserta', $data);
+    // }
 
     public function ubah_profil($data = null, $where = null) {
       $result = false;
@@ -99,5 +90,15 @@ class Model_free extends CI_Model {
       }
       return $result;
     }
+
+    public function select_nilai_tryout($id) {
+        $this->db->select('tb_tryout.nm_tryout, tb_tryout.tgl_to, tb_mapel.nm_mapel, tb_jawaban.jmlh_kosong, tb_jawaban.jmlh_benar, tb_jawaban.jmlh_salah, tb_jawaban.total_nilai');
+        $this->db->from('tb_jawaban');
+        $this->db->join('tb_tryout', 'tb_jawaban.id_tryout = tb_tryout.id_tryout');
+        $this->db->join('tb_mapel', 'tb_jawaban.id_mapel = tb_mapel.id_mapel');
+        $this->db->where($id);
+        return $this->db->get();
+    }
+
 
 }

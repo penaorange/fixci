@@ -16,44 +16,605 @@
                           <div class="table-responsive table-full-width">
 
 
-                            <TABLE class="table">
+                            <table class="table table-bordered table-striped js-dataTable-full">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center"></th>
+                                        <th>Name</th>
+                                        <th class="hidden-xs">Email</th>
+                                        <th class="hidden-xs" style="width: 15%;">Access</th>
+                                        <th class="text-center" style="width: 10%;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td class="font-w600">Craig Stone</td>
+                                        <td class="hidden-xs">client1@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-warning">Trial</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td class="font-w600">Rebecca Reid</td>
+                                        <td class="hidden-xs">client2@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td class="font-w600">Adam Hall</td>
+                                        <td class="hidden-xs">client3@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">4</td>
+                                        <td class="font-w600">Jack Greene</td>
+                                        <td class="hidden-xs">client4@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-success">VIP</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">5</td>
+                                        <td class="font-w600">Tiffany Kim</td>
+                                        <td class="hidden-xs">client5@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">6</td>
+                                        <td class="font-w600">Helen Silva</td>
+                                        <td class="hidden-xs">client6@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-warning">Trial</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">7</td>
+                                        <td class="font-w600">Amanda Powell</td>
+                                        <td class="hidden-xs">client7@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">8</td>
+                                        <td class="font-w600">Denise Watson</td>
+                                        <td class="hidden-xs">client8@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-success">VIP</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">9</td>
+                                        <td class="font-w600">Roger Hart</td>
+                                        <td class="hidden-xs">client9@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">10</td>
+                                        <td class="font-w600">Ethan Howard</td>
+                                        <td class="hidden-xs">client10@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">11</td>
+                                        <td class="font-w600">Dennis Ross</td>
+                                        <td class="hidden-xs">client11@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">12</td>
+                                        <td class="font-w600">Ryan Hall</td>
+                                        <td class="hidden-xs">client12@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">13</td>
+                                        <td class="font-w600">Walter Fox</td>
+                                        <td class="hidden-xs">client13@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">14</td>
+                                        <td class="font-w600">Linda Moore</td>
+                                        <td class="hidden-xs">client14@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">15</td>
+                                        <td class="font-w600">Walter Fox</td>
+                                        <td class="hidden-xs">client15@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-success">VIP</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">16</td>
+                                        <td class="font-w600">Evelyn Willis</td>
+                                        <td class="hidden-xs">client16@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-warning">Trial</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">17</td>
+                                        <td class="font-w600">Ethan Howard</td>
+                                        <td class="hidden-xs">client17@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-success">VIP</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">18</td>
+                                        <td class="font-w600">Lisa Gordon</td>
+                                        <td class="hidden-xs">client18@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-primary">Personal</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">19</td>
+                                        <td class="font-w600">Amanda Powell</td>
+                                        <td class="hidden-xs">client19@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">20</td>
+                                        <td class="font-w600">George Stone</td>
+                                        <td class="hidden-xs">client20@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">21</td>
+                                        <td class="font-w600">Scott Ruiz</td>
+                                        <td class="hidden-xs">client21@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-primary">Personal</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">22</td>
+                                        <td class="font-w600">George Stone</td>
+                                        <td class="hidden-xs">client22@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">23</td>
+                                        <td class="font-w600">Tiffany Kim</td>
+                                        <td class="hidden-xs">client23@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">24</td>
+                                        <td class="font-w600">Ann Parker</td>
+                                        <td class="hidden-xs">client24@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-warning">Trial</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">25</td>
+                                        <td class="font-w600">Joshua Munoz</td>
+                                        <td class="hidden-xs">client25@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">26</td>
+                                        <td class="font-w600">Keith Simpson</td>
+                                        <td class="hidden-xs">client26@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-success">VIP</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">27</td>
+                                        <td class="font-w600">Sara Holland</td>
+                                        <td class="hidden-xs">client27@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-primary">Personal</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">28</td>
+                                        <td class="font-w600">Jack Greene</td>
+                                        <td class="hidden-xs">client28@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">29</td>
+                                        <td class="font-w600">Walter Fox</td>
+                                        <td class="hidden-xs">client29@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-primary">Personal</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">30</td>
+                                        <td class="font-w600">Susan Elliott</td>
+                                        <td class="hidden-xs">client30@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-warning">Trial</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">31</td>
+                                        <td class="font-w600">George Stone</td>
+                                        <td class="hidden-xs">client31@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">32</td>
+                                        <td class="font-w600">Julia Cole</td>
+                                        <td class="hidden-xs">client32@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">33</td>
+                                        <td class="font-w600">Amy Hunter</td>
+                                        <td class="hidden-xs">client33@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">34</td>
+                                        <td class="font-w600">Bruce Edwards</td>
+                                        <td class="hidden-xs">client34@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-warning">Trial</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">35</td>
+                                        <td class="font-w600">Ethan Howard</td>
+                                        <td class="hidden-xs">client35@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-primary">Personal</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">36</td>
+                                        <td class="font-w600">Roger Hart</td>
+                                        <td class="hidden-xs">client36@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-info">Business</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">37</td>
+                                        <td class="font-w600">Amy Hunter</td>
+                                        <td class="hidden-xs">client37@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">38</td>
+                                        <td class="font-w600">Walter Fox</td>
+                                        <td class="hidden-xs">client38@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-danger">Disabled</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">39</td>
+                                        <td class="font-w600">Ethan Howard</td>
+                                        <td class="hidden-xs">client39@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-success">VIP</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">40</td>
+                                        <td class="font-w600">Linda Moore</td>
+                                        <td class="hidden-xs">client40@example.com</td>
+                                        <td class="hidden-xs">
+                                            <span class="label label-warning">Trial</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            
+                            <TABLE class="table table-bordered table-striped js-dataTable-full">
                               <thead class="card">
                                 <tr>
-                                  <td>No. TO</td>
+                                  <td>No.</td>
+                                  <td>Tryout</td>
                                   <td>Mata Pelajaran</td>
                                   <td>Nilai</td>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <th rowspan=3 class="card" align="center">TryOut 1</th>
-                                  <td>Matematika</td>
-                                  <td>80</td>
-                                </tr>
-                                <tr>
-                                  <td>Sunda</td>
-                                  <td>90</td>
-                                </tr>
-                                <tr>
-                                  <td>Fisika</td>
-                                  <td>20</td>
-                                </tr>
-                                <tr>
-                                  <th rowspan=3 class="card">Tryout 2</th>
-                                  <td>Matematika</td>
-                                  <td>80</td>
-                                </tr>
-                                <tr>
-                                  <td>Fisika</td>
-                                  <td>90</td>
-                                </tr>
-                                <tr>
-                                  <td>Kimia</td>
-                                  <td>100</td>
-                                </tr>
+                                <?php $i=1; ?>
+                                <?php foreach ($nilai as $key): ?>
+                                  <tr>
+                                    <td><?php echo $i; ?></td>
+                                    <td><?php echo $key->nm_tryout; ?></td>
+                                    <td><?php echo $key->nm_mapel; ?></td>
+                                    <td><?php echo $key->total_nilai; ?></td>
+                                  </tr>
+                                  <?php $i++ ?>
+                                <?php endforeach; ?>
                               </tbody>
 
                              </TABLE>
+
                              <nav aria-label="Page navigation">
                                 <ul class="pagination">
                                   <li>
@@ -95,50 +656,3 @@
 
 <!-- end modular -->
 <?php $this->load->view('PesertaModular/Berbayar/Footer'); ?>
-
-
-<!-- Modal -->
-
-
-                      <div class="modal fade modal-v2" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="col-md-3 modal-content-left">
-                                          <p class="modal-content-l
-                                          eft-text-1" align="center" style="color:#ddd;">Detail</p>
-                                            <b class="modal-content-left-percent">
-                                              <i class="fa fa-search fa-2x"></i>
-                                            </b>
-                                        </div>
-                                        <div class="col-md-9 modal-content-right">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <hr>
-                                            <div class="form-group">
-                                              <div class="input-group">
-                                                <div class="input-group-addon">Mata Pelajaran</div>
-                                                <input type="text" class="modal-content-right-text-mail" id="matkul" disabled/>
-                                              </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                              <div class="input-group">
-                                                <div class="input-group-addon">Jumlah Soal</div>
-                                                <input type="text" class="modal-content-right-text-mail" id="jumlah" disabled/>
-                                              </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                              <div class="input-group">
-                                                <div class="input-group-addon">Durasi</div>
-                                                <input type="text" class="modal-content-right-text-mail" id="waktu" disabled/>
-                                              </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal">Batal</button>
-                                          <button type="button" class="btn btn-primary btn-fill">Mulai Kerjakan</button>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                  </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->

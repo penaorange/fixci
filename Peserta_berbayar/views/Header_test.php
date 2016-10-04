@@ -22,9 +22,11 @@
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="<?php echo base_url();?>assets/peserta/css/demo.css" rel="stylesheet" />
-    <link href="<?php echo base_url();?>assets/peserta/css/pagination/jpages.css" rel="stylesheet" />
-    <link href="<?php echo base_url();?>assets/peserta/css/pagination/bjqs.css" rel="stylesheet" />
+		<link href="<?php echo base_url();?>assets/peserta/css/demo.css" rel="stylesheet" />
+		<link href="<?php echo base_url();?>assets/peserta/css/soal.css" rel="stylesheet" />
+		<link href="<?php echo base_url();?>assets/peserta/css/soal2.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>assets/peserta/css/sweetalert.css" rel="stylesheet" />
+
 
     <!--     Fonts and icons     -->
 		<!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
@@ -34,66 +36,8 @@
 
 </head>
 <body>
-
 <div class="wrapper">
-    <div class="sidebar" data-color="green" data-image="<?php echo base_url();?>assets/peserta/img/sidebar-14.jpg">
-
-    <!--
-
-        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-        Tip 2: you can also add an image using data-image tag
-
-    -->
-
-    	<div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="#" class="simple-text">
-                    Cermat-Institute
-                </a>
-            </div>
-
-            <ul class="nav">
-                <li class="<?php echo ($this->uri->uri_string() == 'peserta-berbayar') ? 'active' : ''; ?>">
-                    <a href="<?php echo site_url('peserta-berbayar'); ?>">
-                        <i class="fa fa-dashboard"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li class="<?php echo (strstr($this->uri->uri_string(),'tryout-berbayar')) ? 'active' : ''; ?>">
-                    <a href="<?php echo site_url('tryout-berbayar'); ?>">
-                        <i class="fa fa-pencil-square-o"></i>
-                        <p>Tryout</p>
-                    </a>
-                </li>
-                <li class="<?php echo ($this->uri->uri_string() == 'nilai-berbayar') ? 'active' : ''; ?>">
-                    <a href="<?php echo site_url('nilai-berbayar'); ?>">
-                        <i class="fa fa-book"></i>
-                        <p>Nilai</p>
-                    </a>
-                </li>
-                <li class="<?php echo ($this->uri->uri_string() == 'soal-berbayar') ? 'active' : ''; ?>">
-                    <a href="<?php echo site_url('soal-berbayar'); ?>">
-                        <i class="fa fa-file-text-o"></i>
-                        <p>Soal - Soal</p>
-                    </a>
-                </li>
-                <li class="<?php echo ($this->uri->uri_string() == 'pembahasan-berbayar') ? 'active' : ''; ?>">
-                    <a href="<?php echo site_url('pembahasan-berbayar'); ?>">
-                        <i class="fa fa-comment-o"></i>
-                        <p>Pembahasan</p>
-                    </a>
-                </li>
-								<li class="active-pro">
-				                    <a href="#">
-				                        <i class="fa fa-star-o"></i>
-				                        <p>PRO Version</p>
-				                    </a>
-				        </li>
-            </ul>
-    	</div>
-    </div>
-
-    <div class="main-panel">
+    <div class="main-panel-soal">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -104,19 +48,19 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-											<?php if ($this->uri->uri_string() == 'peserta-berbayar'): ?>
+											<?php if ($this->uri->uri_string() == 'peserta-free'): ?>
 													<i class="fa fa-dashboard"></i> Dashboard
-												<?php elseif (strstr($this->uri->uri_string(),'tryout-berbayar')): ?>
+												<?php elseif (strstr($this->uri->uri_string(),'tryout-free')): ?>
 													<i class="fa fa-pencil-square-o"></i> Tryout
-												<?php elseif ($this->uri->uri_string() == 'nilai-berbayar'): ?>
+												<?php elseif ($this->uri->uri_string() == 'nilai-free'): ?>
 													<i class="fa fa-book"></i> Nilai - Nilai
-												<?php elseif ($this->uri->uri_string() == 'soal-berbayar'): ?>
+												<?php elseif ($this->uri->uri_string() == 'soal-free'): ?>
 													<i class="fa fa-file-text-o"></i> Soal - Soal
-												<?php elseif ($this->uri->uri_string() == 'pembahasan-berbayar'): ?>
+												<?php elseif ($this->uri->uri_string() == 'pembahasan-free'): ?>
 													<i class="fa fa-comment-o"></i> Pembahasan
-												<?php elseif ($this->uri->uri_string() == 'profil-berbayar'): ?>
+												<?php elseif ($this->uri->uri_string() == 'profil-free'): ?>
 													<i class="fa fa-user"></i> Profil Pengguna
-												<?php elseif ($this->uri->uri_string() == 'soal-TO-berbayar'): ?>
+												<?php elseif ($this->uri->uri_string() == 'soal-TO-free'): ?>
 													<i class="fa fa-file-text"></i> Soal Tryout
 												<?php else: ?>
 													<i class="fa fa-bug"></i> ERROR!
@@ -129,7 +73,7 @@
 
                     </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right profil-menu">
 											<li class="dropdown user-menu">
 														<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 															<span class="hidden-xs"><i class="fa fa-user"></i> Account</span>
@@ -142,7 +86,7 @@
 																<p>
 						                      <?php echo $this->session->userdata("nama"); ?>
 						                    </p>
-																<a href="<?php echo site_url('profil-berbayar'); ?>"><i class="fa fa-search"></i> Lihat Profil</a>
+																<a href="<?php echo site_url('profil-free'); ?>"><i class="fa fa-search"></i> Lihat Profil</a>
 															</li>
 															<!-- Menu Footer-->
 															<li class="user-footer">
