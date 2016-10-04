@@ -5,7 +5,6 @@ class Peserta_free extends MX_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//$this->load->library('l_admin');
 		$this->load->helper('url');
 		$this->load->model('Model_free');
 		$this->load->library('pagination');
@@ -44,28 +43,80 @@ class Peserta_free extends MX_Controller {
 
 	}
 
-
 	function profil_free(){
 		$this->cek_session();
 		$user = $this->session->userdata('user_data');
 		$id_profil['id_peserta'] = $user['id_peserta'];
 		$data_p['profil_lengkap'] = $this->Model_free->select_profil($id_profil)->row();
+
+		// $where['id_peserta'] = $user['id_peserta'];
+		// $data_p['user'] = var_dump($where);
 		$this->load->view('Profil_free', $data_p);
 	}
 
-	 function free(){
+	function ubah_profil(){
 		$this->cek_session();
-		$this->load->view('Halaman_peserta_free');
+		$user = $this->session->userdata('user_data');
+		$where['id_peserta'] = $user['id_peserta'];
+
+		// $data = $this->input->post(null, true);
+		$datas = $this->input->post(null, true);
+		$data = html_escape($datas);
+
+		$simpanProfil = $this->Model_free->ubah_profil($data, $where);
+		$this->session->set_flashdata('notif_berhasil', 'Profil Berhasil Diubah.');
+		redirect(site_url('profil-free'));
 	}
 
-	function nilai_free(){
-	 $this->cek_session();
-	 $this->load->view('Nilai_free');
- }
 
+	function ubah_password(){
+		$this->cek_session();
+		$user = $this->session->userdata('user_data');
+		$where['id_peserta'] = $user['id_peserta'];
+
+		$pass = $this->input->post(null, true);
+		$data = html_escape($pass);
+
+		$lihatProfil = $this->Model_free->select_profil($where)->row_array();
+		if (md5($data['passLama']) != $lihatProfil['password']) {
+				$this->session->set_flashdata('notif_gagal', 'Gagal Mengubah Password. Password Lama Salah.');
+				redirect(site_url('profil-free'));
+				return false;
+		}else {
+			// unset($data['passLama']);
+			// unset($data['passBaru']);
+			if ($data['password'] != $data['passBaru']) {
+				$this->session->set_flashdata('notif_gagal', 'Konfirmasi Password Salah.');
+				redirect(site_url('profil-free'));
+				return false;
+				}
+			if ($data['password'] == $data['passLama']) {
+				$this->session->set_flashdata('notif_gagal', 'Maaf. Password Yang Sama Tidak Dapat Digunakan.');
+				redirect(site_url('profil-free'));
+				return false;
+			}
+				$dataBaru['password'] = md5($data['password']);
+				$this->Model_free->ubah_profil($dataBaru, $where);
+				$this->session->set_flashdata('notif_berhasil', 'Password Berhasil Diubah.');
+				redirect(site_url('profil-free'));
+			}
+		}
+
+	 function free(){
+			$this->cek_session();
+			$this->load->view('Halaman_peserta_free');
+	 }
+
+	 function nilai_free(){
+		 $this->cek_session();
+		 $user = $this->session->userdata('user_data');
+		 $id['id_peserta']=$user['id_peserta'];
+		 $data['nilai'] = $this->Model_free->select_nilai_tryout($id)->result();
+		 // $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
+		 $this->load->view('Nilai_free', $data);
+ 	 }
 
 	 function tryout_free(){
-		// $this->M_peserta->lihatPeserta($id, $data);
 		$this->cek_session();
 		$user = $this->session->userdata('user_data');
 		$id['to_kk']=$user['id_kelompok_keilmuan'];
@@ -81,7 +132,10 @@ class Peserta_free extends MX_Controller {
 	 $id_kp = $user['id_kelompok_peserta'];
 	 $id_kk = $user['id_kelompok_keilmuan'];
    $id_try = $this->uri->segment(2);
+	 $where['id_peserta'] = $user['id_peserta'];
+	 $where['id_tryout'] = $id_try;
    $data['detail_tryout'] = $this->Model_free->select_detail_tryout($id_try, $id_kk, $id_kp)->result();
+	 $data['hasil_nilai'] = $this->Model_free->lihatNilai($where)->result();
    $this->load->view('Detail_Tryout_free', $data);
   }
 
@@ -89,6 +143,7 @@ class Peserta_free extends MX_Controller {
 	 $this->cek_session();
 	 $id = $this->input->post('id');
 	 $idTo = $this->input->post('idTo');
+	 $data['waktu'] = $this->input->post('waktu');
 	 $data['idTrans'] = $this->input->post('idTrans');
 	 $data['mapel_id'] = $this->input->post('id');
 	 $data['to_id'] = $this->input->post('idTo');

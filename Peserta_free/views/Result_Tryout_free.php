@@ -9,7 +9,7 @@
                           <div class="header text-center">
                               <h4 class="title">Hasil Ujian</h4>
                               <p class="category">result dari tryout yang telah selesai dikerjakan</p>
-                              <a href="<?php echo site_url('peserta-free') ?>"><button type="button" class="btn btn-primary pull-right btn-fill"><i class="fa fa-arrow-left"></i> Kembali</button></a>
+                              <a href="<?php echo site_url('peserta-free') ?>"><button type="button" class="btn btn-primary pull-right btn-fill" onclick="deleteAllCookies('seconds', 'minutes')"><i class="fa fa-arrow-left"></i> Kembali</button></a>
                               <hr/>
                           </div>
                               <div class="content tryout-soal">

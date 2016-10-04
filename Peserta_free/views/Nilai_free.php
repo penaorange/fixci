@@ -15,45 +15,30 @@
                         <div class="col-sm-10 col-md-10 col-md-offset-1">
                           <div class="table-responsive table-full-width">
 
-
                             <TABLE class="table">
                               <thead class="card">
                                 <tr>
-                                  <td>No. TO</td>
+                                  <td>No.</td>
+                                  <td>Tryout</td>
                                   <td>Mata Pelajaran</td>
                                   <td>Nilai</td>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <th rowspan=3 class="card" align="center">TryOut 1</th>
-                                  <td>Matematika</td>
-                                  <td>80</td>
-                                </tr>
-                                <tr>
-                                  <td>Sunda</td>
-                                  <td>90</td>
-                                </tr>
-                                <tr>
-                                  <td>Fisika</td>
-                                  <td>20</td>
-                                </tr>
-                                <tr>
-                                  <th rowspan=3 class="card">Tryout 2</th>
-                                  <td>Matematika</td>
-                                  <td>80</td>
-                                </tr>
-                                <tr>
-                                  <td>Fisika</td>
-                                  <td>90</td>
-                                </tr>
-                                <tr>
-                                  <td>Kimia</td>
-                                  <td>100</td>
-                                </tr>
+                                <?php $i=1; ?>
+                                <?php foreach ($nilai as $key): ?>
+                                  <tr>
+                                    <td><?php echo $i; ?></td>
+                                    <td><?php echo $key->nm_tryout; ?></td>
+                                    <td><?php echo $key->nm_mapel; ?></td>
+                                    <td><?php echo $key->total_nilai; ?></td>
+                                  </tr>
+                                  <?php $i++ ?>
+                                <?php endforeach; ?>
                               </tbody>
 
                              </TABLE>
+
                              <nav aria-label="Page navigation">
                                 <ul class="pagination">
                                   <li>

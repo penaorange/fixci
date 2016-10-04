@@ -18,24 +18,26 @@ class Soal extends CI_Controller {
         $data['soal'] = $this->MSoal->tampilSoal()->result();
         $this->load->view('Soal', $data);
     }
-    public function data($id){
+
+    public function data($id) {
         $data = $this->MSoal->tampilSatuMapel($id)->row();
         echo json_encode($data);
     }
-    public function dataMapel($id){
+
+    public function dataMapel($id) {
         $data = $this->MSoal->tampilJumlahSoal($id)->row();
         echo json_encode($data);
     }
 
     public function editMapel($id = null) {
-        $data = $this->input->post(null,true);
+        $data = $this->input->post(null, true);
         $where['id_mapel'] = $id;
         if ($this->MSoal->editMapel($data, $where)) {
             redirect('Soal');
         }
     }
 
-    function hapusMapel($id=null) {
+    function hapusMapel($id = null) {
         $where['id_mapel'] = $id;
         $this->MSoal->hapusMapel($where);
         redirect('Soal');
@@ -50,8 +52,8 @@ class Soal extends CI_Controller {
                 if ($sl->jumlah_soal == $jml->jml_soal) {
                     $error = 1;
                     $this->session->set_flashdata('gagal', 'Jumlah soal sudah mencukupi kuota');
-                    redirect(site_url()."/Soal");
-                } 
+                    redirect(site_url() . "/Soal");
+                }
             }
         }
         $data['jumlah_soal'] = $this->MSoal->tampilJumlahSoalPublish($id);
@@ -61,7 +63,7 @@ class Soal extends CI_Controller {
     public function lihatSoal($id) {
         $data['mapel'] = $this->MSoal->tampilSatuMapel($id)->result();
         $data['soal'] = $this->MSoal->tampilDataSoal($id)->result();
-        $this->load->view('lihatsoal',$data);
+        $this->load->view('lihatsoal', $data);
     }
 
     public function updateSoal($idSoal) {
@@ -69,16 +71,27 @@ class Soal extends CI_Controller {
         $this->load->view('updateSoal', $data);
     }
 
-    public function editSoal($id=null) {
-        $data = $this->input->post(null,true);
+    public function editSoal($id = null) {
+        $data = $this->input->post(null, true);
         $where['id_soal'] = $id;
         if ($this->MSoal->editSoal($data, $where)) {
-            redirect(base_url()."Soal/lihatSoal/".$this->input->post('id_mapel'));
+            redirect(base_url() . "Soal/lihatSoal/" . $this->input->post('id_mapel'));
         }
     }
 
     public function tambahSoal() {
-        $data = $this->input->post(null, true);
+
+        $this->data = array(
+            'soal' =>$this->input->post('soal'),
+            'pilihan_a' => $this->input->post('pilihan_a'),
+            'pilihan_b' => $this->input->post('pilihan_b'),
+            'pilihan_c' => $this->input->post('pilihan_c'),
+            'pilihan_d' => $this->input->post('pilihan_d'),
+            'pilihan_e' => $this->input->post('pilihan_e'),
+            'jawaban_soal' => $this->input->post('jawaban_soal'),
+            'id_mapel' => $this->input->post('id_mapel')
+        );
+        
         $jumlah = $this->MSoal->tampilJumlahSoal($this->input->post('id_mapel'))->result();
         $soal = $this->MSoal->tampilJumlahSoalPublish($this->input->post('id_mapel'));
         $mapel = $this->input->post('id_mapel');
@@ -86,18 +99,18 @@ class Soal extends CI_Controller {
         foreach ($soal as $sl) {
             foreach ($jumlah as $jml) {
                 if ($sl->jumlah_soal + 1 == $jml->jml_soal) {
-                    $this->MSoal->simpanSoal($data);
+                    $this->MSoal->simpanSoal($this->data);
                     redirect(site_url("Soal"));
                 } else {
-                    $this->MSoal->simpanSoal($data);
+                    $this->MSoal->simpanSoal($this->data);
                     redirect(site_url() . "/Soal/buatSoal/" . $mapel);
                 }
             }
         }
     }
-    
+
     public function tambahMataPelajaran() {
-       $data = $this->input->post(null,true);
+        $data = $this->input->post(null, true);
 //        $idKluj = $this->uri->segment(4);
 //        $to = $this->uri->segment(3);
         $this->MSoal->simpanMapel($data);
