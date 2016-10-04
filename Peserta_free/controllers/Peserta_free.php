@@ -23,7 +23,7 @@ class Peserta_free extends MX_Controller {
     }
 
     public function index() {
-//pengecekan session peserta free
+        //pengecekan session peserta free
         $user = $this->session->userdata('user_data');
         if ($user['id_kelompok_peserta'] == '1') {
             $this->load->view('Halaman_peserta_free');
@@ -33,7 +33,7 @@ class Peserta_free extends MX_Controller {
     }
 
     public function cek_session() {
-//pengecekan session peserta free
+        //pengecekan session peserta free
         $user = $this->session->userdata('user_data');
         if ($user['id_kelompok_peserta'] != '1') {
             redirect(site_url('Login'));
@@ -60,7 +60,7 @@ class Peserta_free extends MX_Controller {
         $user = $this->session->userdata('user_data');
         $id['id_peserta'] = $user['id_peserta'];
         $data['nilai'] = $this->Model_free->select_nilai_tryout($id)->result();
-// $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
+        // $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
         $this->load->view('Nilai_free', $data);
     }
 
@@ -70,7 +70,7 @@ class Peserta_free extends MX_Controller {
         $id['to_kk'] = $user['id_kelompok_keilmuan'];
         $id['to_kp'] = $user['id_kelompok_peserta'];
         $data['tryout'] = $this->Model_free->select_tryout($id)->result();
-// $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
+        // $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
         $this->load->view('Tryout_free', $data);
     }
 
@@ -101,14 +101,14 @@ class Peserta_free extends MX_Controller {
     }
 
     function cekJawaban_free() {
-// array jawaban peserta
+        // array jawaban peserta
         $data = $this->input->post('pil');
         $idMapel = $this->input->post('idMapel');
         $idTo = $this->input->post('idTo');
         $idTrans = $this->input->post('idTrans');
-// array jawaban dari database
+        // array jawaban dari database
         $result = $this->Model_free->jawaban_soal_tryout($idMapel);
-// echo var_dump($result);
+        // echo var_dump($result);
         $benar = 0;
         $salah = 0;
         $kosong = 0;
@@ -116,7 +116,7 @@ class Peserta_free extends MX_Controller {
         $idSalah = array();
         for ($i = 0; $i < sizeOf($result); $i++) {
             $id = $result[$i]['id_soal'];
-// $data[$id];
+            // $data[$id];
             if (!isset($data[$id])) {
                 $kosong++;
                 $koreksi[] = $result[$i]['id_soal'];
@@ -133,19 +133,18 @@ class Peserta_free extends MX_Controller {
         $hasilnya['salah'] = $salah;
         $hasilnya['benar'] = $benar;
         $hasilnya['total'] = ($benar * 4) + ($salah * -1) + ($kosong * 0);
+
         $user = $this->session->userdata('user_data');
         $nilai['id_peserta'] = $user['id_peserta'];
         $nilai['id_tryout'] = $idTo;
         $nilai['id_mapel'] = $idMapel;
-// $nilai['id_transaksi'] = $idTrans;
-// $nilai['id_prodi'] = '1';
+        // $nilai['id_transaksi'] = $idTrans;
+        // $nilai['id_prodi'] = '1';
         $nilai['jmlh_kosong'] = $hasilnya['kosong'];
         $nilai['jmlh_benar'] = $hasilnya['benar'];
         $nilai['jmlh_salah'] = $hasilnya['salah'];
         $nilai['total_nilai'] = $hasilnya['total'];
-        $lihatNilai = $this->Model_free->lihatNilai($nilai);
-        $this->Model_free->insertNilai($nilai);
-        $this->load->view('Result_Tryout_free', $hasilnya);
+
         $lihatNilai = $this->Model_free->lihatNilai($nilai);
         $this->Model_free->insertNilai($nilai);
         $this->load->view('Result_Tryout_free', $hasilnya);

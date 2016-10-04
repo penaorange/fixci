@@ -11,6 +11,7 @@ class Model_free extends CI_Model {
         $this->db->select('*');
         $this->db->from('peserta');
         // $this->db->order_by('date_modified', "desc");
+
         return $this->db->get();
     }
 
@@ -19,6 +20,7 @@ class Model_free extends CI_Model {
         $this->db->from('tb_peserta');
         $this->db->where($id_profil);
         // $this->db->order_by('date_modified', "desc");
+
         return $this->db->get();
     }
 
@@ -58,6 +60,7 @@ class Model_free extends CI_Model {
         // $this->db->where('soal_ujian.id_tryout', $idTo);
         // $this->db->limit(5,0);
         // $this->db->order_by("RAND ()");
+
         return $this->db->get();
     }
 
@@ -76,12 +79,12 @@ class Model_free extends CI_Model {
         $this->db->insert('tb_jawaban', $nilai);
     }
 
-    function lihatNilai($data) {
-        $this->db->select('*');
-        $this->db->from('tb_jawaban');
-        $this->db->where($data);
-        return $this->db->get();
-    }
+	function lihatNilai($data){
+		$this->db->select('*');
+    $this->db->from('tb_jawaban');
+		$this->db->where($data);
+		return $this->db->get();
+	}
 
     public function insertPeserta($data) {
         $this->db->insert('peserta', $data);

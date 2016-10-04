@@ -70,4 +70,4 @@
 </div>
 
 <!-- end modular -->
-<?php $this->load->view('PesertaModular/Free/Footer'); ?>   
+<?php $this->load->view('PesertaModular/Free/Footer'); ?>

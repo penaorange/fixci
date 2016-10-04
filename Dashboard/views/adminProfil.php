@@ -19,10 +19,13 @@
             <br>
             <div class="col-md-4 col-md-offset-4">
                 <div class="alert alert-info">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <center><?php echo $this->session->flashdata('notif'); ?></center>
                 </div>
             </div>
         <?php endif; ?>
+
+
         <div class="row">
             <div class="col-md-12">
                 <div class="nav-tabs-custom">
@@ -112,7 +115,7 @@
             //notify the user.
             message.style.color = badColor;
             message.innerHTML = "Passwords Tidak Cocok!";
-            
+
             document.getElementById("btn-password").disabled = true;
         }
     }
