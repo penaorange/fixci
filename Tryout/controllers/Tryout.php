@@ -73,11 +73,16 @@ class Tryout extends CI_Controller {
         redirect(site_url('Tryout/tampilMapel/' . $data['id_tryout']));
     }
 
-    function laporan($id) {
-        $this->load->view('Laporan');
+    function laporan($id,$kp) {
+//        $data= $this->Mtryout->tampilJawaban(array('id_tryout'=>$id,'id_kelompok_peserta'=>$kp))->result();
+        $data['jawaban'] = $this->Mtryout->tampilHasil(array('id_kelompok_peserta'=>$kp))->result();
+//        echo json_encode($data);
+        $data['id_tryout'] = $id;
+        $datap['kelompok_peserta'] = $kp;
+        $this->load->view('Laporan',$data);
     }
 
-    public function excelfiles() {
+    public function excelfiles($idTo,$kp) {
         $this->load->library('excel/Biffwriter');
         $this->load->library('excel/Format');
         $this->load->library('excel/OLEwriter');
@@ -85,8 +90,8 @@ class Tryout extends CI_Controller {
         $this->load->library('excel/Workbook');
         $this->load->library('excel/Worksheet');
         
-        $res['data'] = $this->Mtryout->laporan()->result();
-
+        $res['data']= $this->Mtryout->tampilJawaban(array('id_tryout'=>$idTo,'id_kelompok_peserta'=>$kp))->result();
+//        echo json_encode($res);
         $this->load->view('excelfiles', $res);
     }
 

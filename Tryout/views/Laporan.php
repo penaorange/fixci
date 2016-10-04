@@ -18,7 +18,7 @@
             <div class="box-header">
                 <h3 class="box-title">Daftar Try Out</h3>
                 <div class="pull-right">
-                    <a  href="<?= base_url()?>Tryout/excelfiles"class="btn btn-info">Ekspor Excel</a>
+                    <a  href="<?= base_url() ?>Tryout/excelfiles/<?= $this->uri->segment(3);?>/<?= $this->uri->segment(4) ?>"class="btn btn-info">Ekspor Excel</a>
                 </div>
             </div>
             <!-- /.box-header -->
@@ -27,9 +27,6 @@
             <div class="col-md-12">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#activity" data-toggle="tab">Trial</a></li>
-                        <li><a href="#berbayar" data-toggle="tab">Berbayar</a></li>
-                        <li><a href="#bimbel" data-toggle="tab">Bimbel</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="active tab-pane" id="activity">
@@ -45,12 +42,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <td>1</td>
-                                <td>Rizqon</td>
-                                <td>800</td>
-                                <td>Lulus</td>
-                                <td>Lulus</td>
-                                <td>Lulus</td>    
+                                    
+                                    <?php foreach ($jawaban as $value) { ?>
+                                    <tr>
+                                    <td>1</td>
+                                    <td><?= $value->nm_peserta ?></td>
+                                    <td><?= $value->nilai_to ?></td>
+                                    <td><?= $value->pilihan1 ?></td>
+                                    <td><?= $value->pilihan2 ?></td>
+                                    <td><?= $value->pilihan3 ?></td>
+                                    </tr>
+                                <?php } ?>
+                                    
                                 </tbody>
                             </table> 
                         </div>
