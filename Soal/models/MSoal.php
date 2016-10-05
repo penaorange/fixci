@@ -94,5 +94,10 @@ class MSoal extends CI_Model {
         $this->db->delete('tb_mapel');
         return 1;
     }
+    function hapusSoal($where) {
+        $this->db->where($where);
+        $this->db->delete('tb_soal');
+        return 1;
+    }
 
 }

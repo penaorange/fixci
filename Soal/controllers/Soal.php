@@ -42,6 +42,11 @@ class Soal extends CI_Controller {
         $this->MSoal->hapusMapel($where);
         redirect('Soal');
     }
+    function hapusSoal($id = null,$mapel = null) {
+        $where['id_soal'] = $id;
+        $this->MSoal->hapusSoal($where);
+        redirect('Soal/lihatSoal/'.$mapel);
+    }
 
     public function buatSoal() {
         $id = $this->uri->segment(3);
