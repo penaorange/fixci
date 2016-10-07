@@ -19,11 +19,6 @@ class Model_berbayar extends CI_Model {
 		$this->db->where($id);
 		$this->db->order_by('id_tryout', "desc");
 		return $this->db->get();
-		// $this->db->select('id_tryout','nm_tryout','tgl_to');
-		// $this->db->from('tb_tryout');
-		// $this->db->where($id);
-		// $this->db->order_by('id_tryout', "desc");
-		// return $this->db->get();
 	}
 
 	public function select_detail_tryout($id_try, $id_kk, $id_kp) {

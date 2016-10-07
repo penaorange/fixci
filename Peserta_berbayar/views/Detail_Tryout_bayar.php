@@ -22,13 +22,6 @@
                             </div>
                           <?php else: ?>
                             <?php foreach ($detail_tryout as $key): ?>
-
-                              <!-- <a class="list-group-item btn" data-toggle="modal" data-target="#modalDetail"
-                                 data-id="<?php echo $key->id_mapel;?>" data-idtrans="<?php echo $key->id_transaksi;?>" data-idto="<?php echo $key->id_tryout;?>" data-nama="<?php echo $key->nm_mapel;?>"
-                                 data-jumlah="<?php echo $key->jml_soal;?>" data-waktu="<?php echo $key->waktu;?>" <?php foreach ($hasil_nilai as $hasil): ?><?php if ($hasil->id_mapel == $key->id_mapel): ?>disabled<?php endif; ?><?php endforeach; ?>>
-                                <h4 class="list-group-item-heading"><i class="fa fa-circle"></i> <?php echo $key->nm_mapel; ?></h4>
-                              </a> -->
-
                               <div class="col-md-4">
                                 <div class="panel panel-primary">
                                   <div class="panel-body">
