@@ -70,7 +70,7 @@
                                         <div class="col-md-9 modal-content-right">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             <hr>
-                                          <form action="<?php echo site_url('soal-TO-berbayar'); ?>" method="post">
+                                          <form action="<?php echo site_url('soal-TO-bimbel'); ?>" method="post">
                                             <input type="hidden" name="id" id="id" />
                                             <input type="hidden" name="idTo" id="idTo" />
                                             <input type="hidden" name="idTrans" id="idtrans" />

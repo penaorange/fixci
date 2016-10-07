@@ -142,7 +142,7 @@
         <h4 class="modal-title" id="myModalLabel" align="center">Ubah Profil</h4>
       </div>
       <div class="modal-body">
-                <form action="<?php echo site_url('ubah-profil-berbayar') ?>" method="post">
+                <form action="<?php echo site_url('ubah-profil-bimbel') ?>" method="post">
                     <div class="row">
                         <div class="col-md-7">
                             <div class="form-group">
@@ -220,7 +220,7 @@
         <h4 class="modal-title text-white" id="myModalLabel" align="center">Ubah Password</h4>
       </div>
       <div class="modal-body">
-                <form action="<?php echo site_url('ubah-password-berbayar') ?>" method="post">
+                <form action="<?php echo site_url('ubah-password-bimbel') ?>" method="post">
                         <div class="form-group">
                             <label>Password Lama</label>
                             <input type="password" class="form-control" name="passLama" placeholder="Password Lama" required>

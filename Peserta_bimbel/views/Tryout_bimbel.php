@@ -31,7 +31,7 @@
                             <div class="content">
                                   <div class="footer text-center">
                                     <hr>
-                                    <form action="<?php echo site_url('tryout-berbayar'); ?>/<?php echo $key->id_tryout; ?>">
+                                    <form action="<?php echo site_url('tryout-bimbel'); ?>/<?php echo $key->id_tryout; ?>">
                                       <div class="stats">
                                       <button type="submit"class="btn">kerjakan</button>
                                       </div>
