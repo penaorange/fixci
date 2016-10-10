@@ -65,7 +65,7 @@ $col_salah = 5;
 
 $temp = 0;
 foreach ($data as $key) {
-    if ($id == 0 || $id != $key->id) {
+    if ($id == 0) {
         $worksheet1->write_string($row, 0, $number, $content);
         $worksheet1->write_string($row, 1, $key->id, $content);
         $worksheet1->write_string($row, 2, $key->nm_peserta, $content);
@@ -74,13 +74,20 @@ foreach ($data as $key) {
         $worksheet1->write_string($row, $col_salah, $key->jmlh_salah, $content);
         $temp = $col_salah;
     } else if ($id == $key->id) {
-        $temp++;
         $worksheet1->write_string($row, $temp +=1, $key->jmlh_benar, $content);
-       $temp++;
-        $worksheet1->write_string($row, $temp +=2, $key->jmlh_kosong, $content);
-       $temp++;
-        $worksheet1->write_string($row, $temp +=3, $key->jmlh_salah, $content);
+        $worksheet1->write_string($row, $temp +=1, $key->jmlh_kosong, $content);
+        $worksheet1->write_string($row, $temp +=1, $key->jmlh_salah, $content);
+    } else if ($id != $key->id) {
+        $row++;
+        $worksheet1->write_string($row, 0, $number, $content);
+        $worksheet1->write_string($row, 1, $key->id, $content);
+        $worksheet1->write_string($row, 2, $key->nm_peserta, $content);
+        $worksheet1->write_string($row, $col_benar, $key->jmlh_benar, $content);
+        $worksheet1->write_string($row, $col_kosong, $key->jmlh_kosong, $content);
+        $worksheet1->write_string($row, $col_salah, $key->jmlh_salah, $content);
+        $temp = $col_salah;
     }
+
     $id = $key->id;
 }
 

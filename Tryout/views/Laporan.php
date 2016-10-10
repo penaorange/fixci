@@ -45,7 +45,7 @@
                                     
                                     <?php foreach ($jawaban as $value) { ?>
                                     <tr>
-                                    <td>1</td>
+                                    <td><?= $value->id_peserta ?></td>
                                     <td><?= $value->nm_peserta ?></td>
                                     <td><?= $value->nilai_to ?></td>
                                     <td><?= $value->pilihan1 ?></td>
