@@ -91,7 +91,13 @@ class Tryout extends CI_Controller {
         $this->load->library('excel/Worksheet');
         
         $res['data']= $this->Mtryout->tampilJawaban(array('id_tryout'=>$idTo,'id_kelompok_peserta'=>$kp))->result();
-//        echo json_encode($res); 
+        $res['prodi'];
+        $i = 0;
+        foreach ($res['data'] as $value) {
+            $res['mapel'][$i] = $this->Mtryout->getMapel(array('id_mapel'=>$value->id_mapel))->result();
+            $i++;
+        }
+//        echo json_encode($res);
         $this->load->view('excelfiles', $res);
     }
 

@@ -47,13 +47,12 @@
                                     <tr>
                                     <td><?= $value->id_peserta ?></td>
                                     <td><?= $value->nm_peserta ?></td>
-                                    <td><?= $value->nilai_to ?></td>
+                                    <td><?= $value->total_nilai ?></td>
                                     <td><?= $value->pilihan1 ?></td>
                                     <td><?= $value->pilihan2 ?></td>
                                     <td><?= $value->pilihan3 ?></td>
                                     </tr>
                                 <?php } ?>
-                                    
                                 </tbody>
                             </table> 
                         </div>

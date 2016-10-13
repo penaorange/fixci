@@ -34,14 +34,28 @@ $worksheet1->write_string(0, 2, 'Nama Peserta', $header);  // Set Nama kolom
 $worksheet1->set_column(0, 2, 50); // Set lebar kolom
 $worksheet1->merge_cells(0, 2, 1, 2);
 
-$worksheet1->write_string(0, 3, 'TPA', $header);  // Set Nama kolom
-$worksheet1->set_column(0, 3, 15); // Set lebar kolom
-$worksheet1->merge_cells(0, 3, 1, 5);
+$fr = 0;
+$fc = 3;
+$lr = 1;
+$lc = 5;
+$i = 3;
+$j = 0;
+foreach ($mapel as $value) {
+    foreach ($mapel[$j] as $mpl) {
+        $worksheet1->write_string(0, $i, $mpl->nm_mapel, $header);  // Set Nama kolom
+        $worksheet1->set_column(0, 3, 15); // Set lebar kolom
+        $worksheet1->merge_cells($fr, $fc, $lr, $lc);
+        $fc = $lc + 1;
+        $lc = $fc + 2;
+        $i = $i + 3;
+    }
+    $j++;
+}
 
-$worksheet1->write_string(0, 6, 'TPA', $header);  // Set Nama kolom
-$worksheet1->set_column(0, 3, 15); // Set lebar kolom
-$worksheet1->merge_cells(0, 6, 1, 8);
 
+//$worksheet1->write_string(0, 6, 'TPA', $header);  // Set Nama kolom
+//$worksheet1->set_column(0, 3, 15); // Set lebar kolom
+//$worksheet1->merge_cells(0, 6, 1, 8);
 //$worksheet1->write_string(0, 10, 'Total Nilai', $header);  // Set Nama kolom
 //$worksheet1->set_column(0, 3, 20); // Set lebar kolom
 //$worksheet1->merge_cells(0, 4, 1, 4);
@@ -67,20 +81,21 @@ $temp = 0;
 foreach ($data as $key) {
     if ($id == 0) {
         $worksheet1->write_string($row, 0, $number, $content);
-        $worksheet1->write_string($row, 1, $key->id, $content);
+        $worksheet1->write_string($row, 1, $key->id_peserta, $content);
         $worksheet1->write_string($row, 2, $key->nm_peserta, $content);
         $worksheet1->write_string($row, $col_benar, $key->jmlh_benar, $content);
         $worksheet1->write_string($row, $col_kosong, $key->jmlh_kosong, $content);
         $worksheet1->write_string($row, $col_salah, $key->jmlh_salah, $content);
         $temp = $col_salah;
-    } else if ($id == $key->id) {
+    } else if ($id == $key->id_peserta) {
         $worksheet1->write_string($row, $temp +=1, $key->jmlh_benar, $content);
         $worksheet1->write_string($row, $temp +=1, $key->jmlh_kosong, $content);
         $worksheet1->write_string($row, $temp +=1, $key->jmlh_salah, $content);
-    } else if ($id != $key->id) {
+    } else if ($id != $key->id_peserta) {
         $row++;
+        $number++;
         $worksheet1->write_string($row, 0, $number, $content);
-        $worksheet1->write_string($row, 1, $key->id, $content);
+        $worksheet1->write_string($row, 1, $key->id_peserta, $content);
         $worksheet1->write_string($row, 2, $key->nm_peserta, $content);
         $worksheet1->write_string($row, $col_benar, $key->jmlh_benar, $content);
         $worksheet1->write_string($row, $col_kosong, $key->jmlh_kosong, $content);
@@ -88,7 +103,7 @@ foreach ($data as $key) {
         $temp = $col_salah;
     }
 
-    $id = $key->id;
+    $id = $key->id_peserta;
 }
 
 $workbook->close();
