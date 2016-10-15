@@ -42,6 +42,11 @@ class Soal extends CI_Controller {
         $this->MSoal->hapusMapel($where);
         redirect('Soal');
     }
+    function hapusSoal($id = null,$mapel = null) {
+        $where['id_soal'] = $id;
+        $this->MSoal->hapusSoal($where);
+        redirect('Soal/lihatSoal/'.$mapel);
+    }
 
     public function buatSoal() {
         $id = $this->uri->segment(3);
@@ -80,9 +85,17 @@ class Soal extends CI_Controller {
     }
 
     public function tambahSoal() {
-
+        $config['upload_path'] = 'assets/gambar_soal/';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['max_size'] = 50000;
+        $config['remove_spaces'] = true;
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('gambar');
+        $gambar = $this->upload->data('file_name');
+        
         $this->data = array(
-            'soal' =>$this->input->post('soal'),
+            'gambar' => $gambar,
+            'soal' => $this->input->post('soal'),
             'pilihan_a' => $this->input->post('pilihan_a'),
             'pilihan_b' => $this->input->post('pilihan_b'),
             'pilihan_c' => $this->input->post('pilihan_c'),
@@ -91,10 +104,11 @@ class Soal extends CI_Controller {
             'jawaban_soal' => $this->input->post('jawaban_soal'),
             'id_mapel' => $this->input->post('id_mapel')
         );
-        
+
         $jumlah = $this->MSoal->tampilJumlahSoal($this->input->post('id_mapel'))->result();
         $soal = $this->MSoal->tampilJumlahSoalPublish($this->input->post('id_mapel'));
         $mapel = $this->input->post('id_mapel');
+
 
         foreach ($soal as $sl) {
             foreach ($jumlah as $jml) {
