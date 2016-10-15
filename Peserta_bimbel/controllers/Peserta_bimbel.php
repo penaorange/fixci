@@ -33,7 +33,7 @@ class Peserta_bimbel extends MX_Controller {
 	}
 
 	public function cek_session(){
-		//pengecekan session peserta bayar
+		//pengecekan session peserta bimbel
 		$user = $this->session->userdata('user_data');
 		if($user['id_kelompok_peserta'] != '3') {
 			redirect(site_url('Login'));
@@ -48,58 +48,103 @@ class Peserta_bimbel extends MX_Controller {
 		$user = $this->session->userdata('user_data');
 		$id_profil['id_peserta'] = $user['id_peserta'];
 		$data_p['profil_lengkap'] = $this->Model_bimbel->select_profil($id_profil)->row();
-		$this->load->view('Profil_bimbel', $data_p);	}
+		$this->load->view('Profil_bimbel', $data_p);
+	}
+
+	function ubah_profil(){
+		$this->cek_session();
+		$user = $this->session->userdata('user_data');
+		$where['id_peserta'] = $user['id_peserta'];
+
+		// $data = $this->input->post(null, true);
+		$datas = $this->input->post(null, true);
+		$data = html_escape($datas);
+
+		$simpanProfil = $this->Model_bimbel->ubah_profil($data, $where);
+		$this->session->set_flashdata('notif_berhasil', 'Profil Berhasil Diubah.');
+		redirect(site_url('profil-bimbel'));
+	}
 
 	 function bimbel(){
 		 $this->cek_session();
 		 $this->load->view('Halaman_peserta_bimbel');
 	}
 
+	function ubah_password(){
+		$this->cek_session();
+		$user = $this->session->userdata('user_data');
+		$where['id_peserta'] = $user['id_peserta'];
+
+		$pass = $this->input->post(null, true);
+		$data = html_escape($pass);
+
+		$lihatProfil = $this->Model_bimbel->select_profil($where)->row_array();
+		if (md5($data['passLama']) != $lihatProfil['password']) {
+				$this->session->set_flashdata('notif_gagal', 'Gagal Mengubah Password. Password Lama Salah.');
+				redirect(site_url('profil-bimbel'));
+				return false;
+		}else {
+			// unset($data['passLama']);
+			// unset($data['passBaru']);
+			if ($data['password'] != $data['passBaru']) {
+				$this->session->set_flashdata('notif_gagal', 'Konfirmasi Password Salah.');
+				redirect(site_url('profil-bimbel'));
+				return false;
+				}
+			if ($data['password'] == $data['passLama']) {
+				$this->session->set_flashdata('notif_gagal', 'Maaf. Password Yang Sama Tidak Dapat Digunakan.');
+				redirect(site_url('profil-bimbel'));
+				return false;
+			}
+				$dataBaru['password'] = md5($data['password']);
+				$this->Model_bimbel->ubah_profil($dataBaru, $where);
+				$this->session->set_flashdata('notif_berhasil', 'Password Berhasil Diubah.');
+				redirect(site_url('profil-bimbel'));
+			}
+		}
+
   function tryout_bimbel(){
-	 $this->cek_session();
-	 $user = $this->session->userdata('user_data');
-	 $id['to_kk']=$user['id_kelompok_keilmuan'];
-	 $id['to_kp']=$user['id_kelompok_peserta'];
-	 $data['tryout'] = $this->Model_bimbel->select_tryout($id)->result();
-	 // $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
-	 $this->load->view('Tryout_bimbel', $data);
+		$this->cek_session();
+		$user = $this->session->userdata('user_data');
+		$id['to_kk']=$user['id_kelompok_keilmuan'];
+		$id['to_kp']=$user['id_kelompok_peserta'];
+		$data['tryout'] = $this->Model_bimbel->select_tryout($id)->result();
+		$this->load->view('Tryout_bimbel', $data);
  }
 
  function detail_tryout_bimbel(){
-	$this->cek_session();
-	$user = $this->session->userdata('user_data');
-	$id_kp = $user['id_kelompok_peserta'];
-	$id_kk = $user['id_kelompok_keilmuan'];
-	$id_try = $this->uri->segment(2);
-	$data['detail_tryout'] = $this->Model_bimbel->select_detail_tryout($id_try, $id_kk, $id_kp)->result();
-	$this->load->view('Detail_Tryout_bimbel', $data);
+	 $this->cek_session();
+	 $user = $this->session->userdata('user_data');
+	 $id_kp = $user['id_kelompok_peserta'];
+	 $id_kk = $user['id_kelompok_keilmuan'];
+   $id_try = $this->uri->segment(2);
+	 $where['id_peserta'] = $user['id_peserta'];
+	 $where['id_tryout'] = $id_try;
+   $data['detail_tryout'] = $this->Model_bimbel->select_detail_tryout($id_try, $id_kk, $id_kp)->result();
+	 $data['hasil_nilai'] = $this->Model_bimbel->lihatNilai($where)->result();
+   $this->load->view('Detail_Tryout_bimbel', $data);
  }
 
  function nilai_bimbel(){
-  $this->cek_session();
-  $this->load->view('Nilai_bimbel');
+	 $this->cek_session();
+	 $user = $this->session->userdata('user_data');
+	 $id['id_peserta']=$user['id_peserta'];
+	 $data['nilai'] = $this->Model_bimbel->select_nilai_tryout($id)->result();
+	 // $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
+	 $this->load->view('Nilai_bimbel', $data);
  }
 
  function soal_bimbel(){
 	 $this->cek_session();
- 	$id = $this->input->post('id');
- 	$idTo = $this->input->post('idTo');
- 	$data['idTrans'] = $this->input->post('idTrans');
- 	$data['mapel_id'] = $this->input->post('id');
- 	$data['to_id'] = $this->input->post('idTo');
-	$data['nama_mapel'] = $this->Model_bimbel->tampil_soal_tryout($id)->row();
-	$data['soal'] = $this->Model_bimbel->tampil_soal_tryout($id)->result();
-	$this->load->view('Soal_Tryout_bimbel', $data);
- }
-
- function kumpulan_soal_bimbel(){
- $this->cek_session();
- $this->load->view('Soal_bimbel');
- }
-
- function pembahasan_bimbel(){
- $this->cek_session();
- $this->load->view('Pembahasan_bimbel');
+	 $id = $this->input->post('id');
+	 $idTo = $this->input->post('idTo');
+	 $data['waktu'] = $this->input->post('waktu');
+	 $data['idTrans'] = $this->input->post('idTrans');
+	 $data['mapel_id'] = $this->input->post('id');
+	 $data['to_id'] = $this->input->post('idTo');
+	 $data['nama_mapel'] = $this->Model_bimbel->tampil_soal_tryout($id)->row();
+	 $data['soal'] = $this->Model_bimbel->tampil_soal_tryout($id)->result();
+	 $this->load->view('Soal_Tryout_bimbel', $data);
  }
 
  function cekJawaban_bimbel(){
@@ -109,20 +154,21 @@ class Peserta_bimbel extends MX_Controller {
  	$idTo = $this->input->post('idTo');
  	$idTrans = $this->input->post('idTrans');
  	// array jawaban dari database
- 	$result = $this->Model_bimbel->jawaban_soal_tryout($idMapel, $idTo);
+ 	$result = $this->Model_bimbel->jawaban_soal_tryout($idMapel);
  	// echo var_dump($result);
  	$benar=0;
  	$salah=0;
+ 	$kosong=0;
  	$koreksi=array();
  	$idSalah = array();
  	for ($i=0; $i <sizeOf($result) ; $i++) {
  				$id = $result[$i]['id_soal'];
  				// $data[$id];
  				if (!isset($data[$id])) {
- 					$salah++;
+ 					$kosong++;
  					$koreksi[]=$result[$i]['id_soal'];
  					$idSalah[] = $i;
- 				}else if($data[$id] == $result[$i]['jawaban_benar']){
+ 				}else if($data[$id] == $result[$i]['jawaban_soal']){
  					$benar++;
  				}else{
  					$salah++;
@@ -130,31 +176,35 @@ class Peserta_bimbel extends MX_Controller {
  					$idSalah[] = $i;
  				}
  	}
- //	echo "<script> alert('Jumlah Salah = $salah'); </script>";
- 	// echo "jumlah salah = ".$salah."<br/>";
- 	// echo "jumlah benar = ".$benar."<br/>";
- 	// echo "Total nilai = ".$benar*10;
- 	// echo "<br>";
- 	// for ($k=0; $k <sizeOf($koreksi) ; $k++) {
- 	// 	echo "yang salah adalah id ".$koreksi[$k]."dengan jawaban aslinya ".$result[$idSalah[$k]]['jawaban_benar']."<br>";
- //}
+ 	$hasilnya['kosong'] = $kosong;
  	$hasilnya['salah'] = $salah;
  	$hasilnya['benar'] = $benar;
- 	$hasilnya['total'] = $benar*10;
+ 	$hasilnya['total'] = ($benar*4)+($salah*-1)+($kosong*0);
 
-	$user = $this->session->userdata('user_data');
-	$nilai['id_peserta'] = $user['id_peserta'];
-	$nilai['id_transaksi'] = $idTrans;
-	$nilai['id_prodi'] = '1';
-	$nilai['jmlh_benar'] = $hasilnya['benar'];
-	$nilai['jmlh_salah'] = $hasilnya['salah'];
-	$nilai['total_nilai'] = $hasilnya['total'];
-	$this->Model_bimbel->insertNilai($nilai);
+ 	$user = $this->session->userdata('user_data');
+ 	$nilai['id_peserta'] = $user['id_peserta'];
+ 	$nilai['id_tryout'] = $idTo;
+ 	$nilai['id_mapel'] = $idMapel;
+ 	// $nilai['id_transaksi'] = $idTrans;
+ 	// $nilai['id_prodi'] = '1';
+ 	$nilai['jmlh_kosong'] = $hasilnya['kosong'];
+ 	$nilai['jmlh_benar'] = $hasilnya['benar'];
+ 	$nilai['jmlh_salah'] = $hasilnya['salah'];
+ 	$nilai['total_nilai'] = $hasilnya['total'];
 
+ 	$lihatNilai = $this->Model_bimbel->lihatNilai($nilai);
+ 	$this->Model_bimbel->insertNilai($nilai);
  	$this->load->view('Result_Tryout_bimbel', $hasilnya);
- 	// echo var_dump($koreksi)." koreksi<br><br>";
- 	// echo var_dump($data)." pilihan user<br><br>";
- 	// echo var_dump($result)." kunci jawaban <br><br>";
+}
+
+ function kumpulan_soal_bimbel(){
+ $this->cek_session();
+ $this->load->view('Soal_bimbel');
+ }
+
+ function pembahasan_bimbel(){
+ $this->cek_session();
+ $this->load->view('Pembahasan_bimbel');
  }
 
 }

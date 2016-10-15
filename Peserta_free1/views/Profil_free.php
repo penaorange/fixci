@@ -1,4 +1,4 @@
-<?php $this->load->view('PesertaModular/Bimbel/Header'); ?>
+<?php $this->load->view('PesertaModular/Free/Header'); ?>
 <!-- start-modular -->
 
 <div class="loading_page" id="loadPage" align="center">
@@ -131,7 +131,7 @@
 </div>
 
 <!-- end modular -->
-<?php $this->load->view('PesertaModular/Bimbel/Footer'); ?>
+<?php $this->load->view('PesertaModular/Free/Footer'); ?>
 
 <!-- Modal -->
 <div class="modal fade" id="modalProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -142,7 +142,7 @@
         <h4 class="modal-title" id="myModalLabel" align="center">Ubah Profil</h4>
       </div>
       <div class="modal-body">
-                <form action="<?php echo site_url('ubah-profil-bimbel') ?>" method="post">
+                <form action="<?php echo site_url('ubah-profil-free') ?>" method="post">
                     <div class="row">
                         <div class="col-md-7">
                             <div class="form-group">
@@ -220,7 +220,7 @@
         <h4 class="modal-title text-white" id="myModalLabel" align="center">Ubah Password</h4>
       </div>
       <div class="modal-body">
-                <form action="<?php echo site_url('ubah-password-bimbel') ?>" method="post">
+                <form action="<?php echo site_url('ubah-password-free') ?>" method="post">
                         <div class="form-group">
                             <label>Password Lama</label>
                             <input type="password" class="form-control" name="passLama" placeholder="Password Lama" required>

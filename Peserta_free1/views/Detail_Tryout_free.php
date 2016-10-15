@@ -7,14 +7,12 @@
             <div class="col-sm-12 col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Pilih Mata Pelajaran</h4>
+                        <h4 class="title">Pilih Paket Soal Tryout</h4>
                         <p class="category">Klik untuk melihat detail</a></p>
                     </div>
                     <div class="content all-icons">
                         <div class="row">
                             <div class="col-sm-12 col-md-12">
-
-
                                 <div class="list-group">
                                     <?php if (empty($detail_tryout)): ?>
                                         <div class="alert alert-warning">
@@ -47,8 +45,6 @@
                                     <?php endif; ?>
                                 </div>
 
-                                <!--<h1><?php echo $id_tryout; ?>   </h1>-->
-
                             </div>
                         </div>
 
@@ -63,7 +59,7 @@
                         <div class="content all-icons">
                             <div class="row">
                                 <div class="col-sm-12 col-md-12">
-                                    <form action="<?= base_url('index.php/peserta_free/nilaitryout');?>" method="post">
+                                    <form>
                                         <label>pilihan 1</label>
                                         <div class="">
                                             <div class="col-sm-2 col-md-2">
@@ -81,13 +77,55 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-6 col-md-6">
-                                                <select class="form-control" name="pilihan1" required>
-                                                    <option class="form-control"  value="">Jurusan</option>
-                                                    <option class="form-control"  value="401016">UI Kedokteran</option>
+                                                <select class="form-control">
+                                                    <option class="form-control" value="">Jurusan</option>
                                                 </select>
-                                                <input type="hidden" name="idtryout" value="<?php echo $id_tryout; ?>">
                                             </div>
                                         </div>
+<!--                                        <label>pilihan 2</label>
+                                        <div class="">
+                                            <div class="col-sm-2 col-md-2">
+                                                <select class="form-control">
+                                                    <option value="">Wilayah</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4 col-md-4">
+                                                <select class="form-control">
+                                                    <option class="form-control" value="">Universitas</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <select class="form-control">
+                                                    <option class="form-control" value="">Jurusan</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <label>pilihan 3</label>
+                                        <div class="">
+                                            <div class="col-sm-2 col-md-2">
+                                                <select class="form-control">
+                                                    <option value="">Wilayah</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4 col-md-4">
+                                                <select class="form-control">
+                                                    <option class="form-control" value="">Universitas</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <select class="form-control">
+                                                    <option class="form-control" value="">Jurusan</option>
+                                                </select>
+                                            </div>
+                                        </div>-->
                                         <div class="col-md-2 col-md-offset-10">
                                             <button type="submit" class="btn btn-md btn-primary">Kirim Hasil Tryout</button>
                                         </div>
@@ -105,11 +143,14 @@
     </div>
 </div>
 
+
 <!-- end modular -->
 <?php $this->load->view('PesertaModular/Free/Footer'); ?>
 
 
 <!-- Modal -->
+
+
 <div class="modal fade modal-v2" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
