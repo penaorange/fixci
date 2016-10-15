@@ -36,6 +36,7 @@ class ModulPembahasan extends CI_Controller {
         }
     }
 
+    
     function tampilModul() {
         $data['modul'] = $this->MPembahasan->tampilModul()->result();
         $this->load->view('Pembahasan', $data);
