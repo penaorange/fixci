@@ -1,6 +1,5 @@
 <?php $this->load->view('PesertaModular/Free/Header'); ?>
 <!-- start-modular -->
-
 <div class="content">
     <div class="container-fluid">
       <div class="row">
@@ -12,53 +11,35 @@
                   </div> -->
                   <div class="content all-icons">
                       <div class="row">
-                        <div class="col-sm-10 col-md-10 col-md-offset-1">
-                          <div class="table-responsive table-full-width">
+                        <div class="col-sm-12 col-md-12">
+                          <div class="card tabel-univ">
+                              <div class="content table-responsive table-full-width">
+                                <TABLE id="univ" class="table table-hover table-striped">
+                                  <thead>
+                                    <tr align="center">
+                                      <td width="15%">Kode <i class="fa fa-sort"></i></td>
+                                      <td>Tryout <i class="fa fa-sort"></i></td>
+                                      <td>Mata Pelajaran <i class="fa fa-sort"></i></td>
+                                      <td>Nilai <i class="fa fa-sort"></i></td>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <?php $i=1; ?>
+                                    <?php foreach ($nilai as $key): ?>
+                                      <tr>
+                                        <td><?php echo $i; ?></td>
+                                        <td><?php echo $key->nm_tryout; ?></td>
+                                        <td><?php echo $key->nm_mapel; ?></td>
+                                        <td><?php echo $key->total_nilai; ?></td>
+                                      </tr>
+                                      <?php $i++ ?>
+                                    <?php endforeach; ?>
+                                  </tbody>
 
-                            <TABLE class="table">
-                              <thead class="card">
-                                <tr>
-                                  <td>No.</td>
-                                  <td>Tryout</td>
-                                  <td>Mata Pelajaran</td>
-                                  <td>Nilai</td>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <?php $i=1; ?>
-                                <?php foreach ($nilai as $key): ?>
-                                  <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $key->nm_tryout; ?></td>
-                                    <td><?php echo $key->nm_mapel; ?></td>
-                                    <td><?php echo $key->total_nilai; ?></td>
-                                  </tr>
-                                  <?php $i++ ?>
-                                <?php endforeach; ?>
-                              </tbody>
+                                 </TABLE>
 
-                             </TABLE>
-
-                             <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                  <li>
-                                    <a href="#" aria-label="Previous">
-                                      <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                  </li>
-                                  <li><a href="#">1</a></li>
-                                  <li><a href="#">2</a></li>
-                                  <li><a href="#">3</a></li>
-                                  <li><a href="#">4</a></li>
-                                  <li><a href="#">5</a></li>
-                                  <li>
-                                    <a href="#" aria-label="Next">
-                                      <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </nav>
-                        </div> <!--end div tabel-->
+                              </div>
+                          </div>
 
                               <div class="list-group">
                               <!-- foreach nya nanti -->

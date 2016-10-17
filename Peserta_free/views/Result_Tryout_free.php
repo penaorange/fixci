@@ -1,7 +1,7 @@
 <?php $this->load->view('PesertaModular/Free/Header_test'); ?>
 <!-- start-modular -->
 
-<div class="content" onload="return deleteAllCookies()">
+<div class="content">
             <div class="container-fluid">
                 <div class="row">
 					          <div class="col-md-6 col-md-offset-3">
@@ -31,4 +31,4 @@
 </div>
 
 <!-- end modular -->
-<?php $this->load->view('PesertaModular/Free/Footer_soal'); ?>
+<?php $this->load->view('PesertaModular/Free/FooterResult'); ?>
