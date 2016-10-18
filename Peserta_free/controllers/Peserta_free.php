@@ -142,6 +142,7 @@ class Peserta_free extends MX_Controller {
         $where['id_peserta'] = $user['id_peserta'];
         $where['id_tryout'] = $id_try;
         $data['id_tryout'] = $id_try;
+        $data['kk'] = $id_kk;
         $data['detail_tryout'] = $this->Model_free->select_detail_tryout($id_try, $id_kk, $id_kp)->result();
         $data['hasil_nilai'] = $this->Model_free->lihatNilai($where)->result();
         $this->load->view('Detail_Tryout_free', $data);
@@ -265,6 +266,20 @@ class Peserta_free extends MX_Controller {
         // $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
         $this->load->view('Detail_nilai', $data);
 //        var_dump($data);
+    }
+    
+    public function getUniversitas($wilayah) {
+        $data['universitas'] = $this->Model_free->getUniversitas(array('wilayah' => $wilayah))->result();
+        echo json_encode($data);
+    }
+
+    public function getProdi($universitas, $kk) {
+        if ($kk == '3') {
+            $data['prodi'] = $this->Model_free->getProdi(array('id_universitas' => $universitas))->result();
+        } else {
+            $data['prodi'] = $this->Model_free->getProdi(array('id_universitas' => $universitas, 'id_jenis' => $kk))->result();
+        }
+        echo json_encode($data);
     }
 
 }

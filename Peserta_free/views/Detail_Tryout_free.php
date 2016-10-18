@@ -63,12 +63,12 @@
                         <div class="content all-icons">
                             <div class="row">
                                 <div class="col-sm-12 col-md-12">
-                                    <form action="<?= base_url('index.php/peserta_free/nilaitryout');?>" method="post">
+                                    <form action="<?= base_url('index.php/peserta_free/nilaitryout'); ?>" method="post">
                                         <label>pilihan 1</label>
                                         <div class="">
                                             <div class="col-sm-2 col-md-2">
-                                                <select class="form-control">
-                                                    <option value="">Wilayah</option>
+                                                <select class="form-control" id="wilayah" required>
+                                                    <option>Wilayah</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -76,15 +76,10 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-4 col-md-4">
-                                                <select class="form-control">
-                                                    <option class="form-control" value="">Universitas</option>
-                                                </select>
+                                                <select class="form-control" id="universitas" required></select>
                                             </div>
                                             <div class="col-sm-6 col-md-6">
-                                                <select class="form-control" name="pilihan1" required>
-                                                    <option class="form-control"  value="">Jurusan</option>
-                                                    <option class="form-control"  value="401016">UI Kedokteran</option>
-                                                </select>
+                                                <select class="form-control" name="pilihan1" id="prodi" required></select>
                                                 <input type="hidden" name="idtryout" value="<?php echo $id_tryout; ?>">
                                             </div>
                                         </div>
@@ -100,14 +95,55 @@
             </div>
 
         </div>
-
-
     </div>
 </div>
-
+<input type="hidden" id="base-url" value="<?= base_url() ?>">
+<input type="hidden" id="kelompok-keilmuan" value="<?= $kk ?>" >
 <!-- end modular -->
 <?php $this->load->view('PesertaModular/Free/Footer'); ?>
-
+<script>
+    var base_url = $('#base-url').val();
+    $('#wilayah').on('change', function () {
+        var wilayah = $('#wilayah').val();
+        $.ajax({
+            url: base_url + 'Peserta_free/getUniversitas/' + wilayah,
+            type: 'POST',
+            success: function (res) {
+                res = $.parseJSON(res);
+                $('#universitas').removeAttr('disabled');
+                $('option').remove('#universitasOption');
+                $('option').remove('#prodiOption');
+                $.each(res.universitas, function (key, value) {
+                    $('#universitas').append("<option id='universitasOption' class='form-control' value='" + value.id_universitas + "'>" + value.nm_universitas + "</option>");
+                })
+            },
+            error: function (jqXHR, exception) {
+                alert('gagal');
+            },
+        });
+    }
+    )
+    $('#universitas').on('change', function () {
+        var universitas = $('#universitas').val();
+        var kelompokKeilmuan = $('#kelompok-keilmuan').val();
+        $.ajax({
+            url: base_url + 'Peserta_free/getProdi/' + universitas +'/'+kelompokKeilmuan ,
+            type: 'POST',
+            success: function (res) {
+                res = $.parseJSON(res);
+                $('#prodi').removeAttr('disabled');
+                $('option').remove('#prodiOption');
+                $.each(res.prodi, function (key, value) {
+                    $('#prodi').append("<option id='prodiOption' class='form-control' value='" + value.id_prodi + "'>" + value.nm_prodi + "</option>");
+                })
+            },
+            error: function (jqXHR, exception) {
+                alert('gagal');
+            },
+        });
+    }
+    )
+</script>
 
 <!-- Modal -->
 <div class="modal fade modal-v2" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

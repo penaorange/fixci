@@ -136,6 +136,21 @@ class Model_free extends CI_Model {
     public function nilaiAkhir($data) {
         $this->db->insert('tb_hasil', $data);
     }
+    
+    public function getUniversitas($where = null){
+        $this->db->select('id_universitas,nm_universitas,wilayah');
+        if ($where !=null) {
+            $this->db->where($where);
+        }
+        return $this->db->get('tb_universitas');
+    }
+    public function getProdi($where = null){
+        $this->db->select('id_prodi,nm_prodi,nilai_aman,id_jenis,id_universitas');
+        if ($where !=null) {
+            $this->db->where($where);
+        }
+        return $this->db->get('tb_prodi');
+    }
 
     public function tampilNilaiNas($id) {
         $this->db->select('nm_tryout as nm_to,tryout.id_tryout as id_to, nilai_to as nilai, pilihan1 as pil1, aman_1 as aman1');
