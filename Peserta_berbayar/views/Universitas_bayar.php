@@ -1,4 +1,4 @@
-<?php $this->load->view('PesertaModular/Bimbel/Header'); ?>
+<?php $this->load->view('PesertaModular/Berbayar/Header'); ?>
 <!-- start-modular -->
 
 <div class="content">
@@ -12,72 +12,31 @@
                   </div> -->
                   <div class="content all-icons">
                       <div class="row">
-                        <div class="col-sm-10 col-md-10 col-md-offset-1">
-                          <div class="table-responsive table-full-width">
+                        <div class="col-sm-12 col-md-12">
+                          <div class="card tabel-univ">
+                              <div class="content table-responsive table-full-width">
+                                <TABLE id="univ" class="table table-hover table-striped">
+                                  <thead>
+                                    <tr align="center">
+                                      <td width="15%">Kode Univ. <i class="fa fa-sort"></i></td>
+                                      <td>Nama <i class="fa fa-sort"></i></td>
+                                      <td width="20%">Wilayah <i class="fa fa-sort"></i></td>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <?php foreach ($univ as $key): ?>
+                                      <tr>
+                                        <td><?php echo $key->id_universitas; ?></td>
+                                        <td><?php echo $key->nm_universitas; ?></td>
+                                        <td><?php echo $key->wilayah; ?></td>
+                                      </tr>
+                                    <?php endforeach; ?>
+                                  </tbody>
 
+                                 </TABLE>
 
-                            <TABLE class="table">
-                              <thead class="card">
-                                <tr>
-                                  <td>No.</td>
-                                  <td>Mata Pelajaran</td>
-                                  <td>Lihat Pembahasan</td>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <th>1</th>
-                                  <td>Matematika</td>
-                                  <td><button type="button" class="btn btn-fill btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr>
-                                <tr>
-                                  <th>2</th>
-                                  <td>Sunda</td>
-                                  <td><button type="button" class="btn btn-fill btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr>
-                                <tr>
-                                  <th>3</th>
-                                  <td>Fisika</td>
-                                  <td><button type="button" class="btn btn-fill btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr>
-                                <tr>
-                                  <th>4</th>
-                                  <td>Biologi</td>
-                                  <td><button type="button" class="btn btn-fill btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr>
-                                <tr>
-                                  <th>5</th>
-                                  <td>PKn</td>
-                                  <td><button type="button" class="btn btn-fill btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr>
-                                <tr>
-                                  <th>6</th>
-                                  <td>Elektro</td>
-                                  <td><button type="button" class="btn btn-fill btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr>
-                              </tbody>
-
-                             </TABLE>
-                             <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                  <li>
-                                    <a href="#" aria-label="Previous">
-                                      <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                  </li>
-                                  <li><a href="#">1</a></li>
-                                  <li><a href="#">2</a></li>
-                                  <li><a href="#">3</a></li>
-                                  <li><a href="#">4</a></li>
-                                  <li><a href="#">5</a></li>
-                                  <li>
-                                    <a href="#" aria-label="Next">
-                                      <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </nav>
-                        </div> <!--end div tabel-->
+                              </div>
+                          </div>
 
                               <div class="list-group">
                               <!-- foreach nya nanti -->
@@ -98,7 +57,7 @@
 </div>
 
 <!-- end modular -->
-<?php $this->load->view('PesertaModular/Bimbel/Footer'); ?>
+<?php $this->load->view('PesertaModular/Berbayar/Footer'); ?>
 
 
 <!-- Modal -->

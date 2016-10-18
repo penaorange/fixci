@@ -85,5 +85,11 @@ class Model_bimbel extends CI_Model {
 			return $this->db->get();
 	}
 
+	function tampil_univ(){
+		$this->db->select('*');
+		$this->db->from('tb_universitas');
+		return $this->db->get();
+	}
+
 
 }

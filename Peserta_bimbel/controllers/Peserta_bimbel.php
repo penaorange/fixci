@@ -202,9 +202,10 @@ class Peserta_bimbel extends MX_Controller {
  $this->load->view('Soal_bimbel');
  }
 
- function pembahasan_bimbel(){
+ function universitas_bimbel(){
  $this->cek_session();
- $this->load->view('Pembahasan_bimbel');
+ $data['univ'] = $this->Model_bimbel->tampil_univ()->result();
+ $this->load->view('Universitas_bimbel', $data);
  }
 
 }

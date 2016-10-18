@@ -136,18 +136,17 @@ class Model_free extends CI_Model {
     public function nilaiAkhir($data) {
         $this->db->insert('tb_hasil', $data);
     }
-
-    public function getUniversitas($where = null) {
+    
+    public function getUniversitas($where = null){
         $this->db->select('id_universitas,nm_universitas,wilayah');
-        if ($where != null) {
+        if ($where !=null) {
             $this->db->where($where);
         }
         return $this->db->get('tb_universitas');
     }
-
-    public function getProdi($where = null) {
+    public function getProdi($where = null){
         $this->db->select('id_prodi,nm_prodi,nilai_aman,id_jenis,id_universitas');
-        if ($where != null) {
+        if ($where !=null) {
             $this->db->where($where);
         }
         return $this->db->get('tb_prodi');
@@ -171,9 +170,9 @@ class Model_free extends CI_Model {
     public function detailNilai($id_peserta, $id_to) {
         $this->db->select('jaw.id_mapel as idmapel, mapel.nm_mapel as nm_mapel, jmlh_kosong, jmlh_salah,jmlh_benar');
         $this->db->from('tb_jawaban as jaw');
-        $this->db->join('tb_mapel as mapel', 'jaw.id_mapel = mapel.id_mapel');
-        $this->db->where('id_peserta', $id_peserta);
-        $this->db->where('id_tryout', $id_to);
+        $this->db->join('tb_mapel as mapel','jaw.id_mapel = mapel.id_mapel');
+        $this->db->where('id_peserta',$id_peserta);
+        $this->db->where('id_tryout',$id_to);
         return $this->db->get();
     }
 

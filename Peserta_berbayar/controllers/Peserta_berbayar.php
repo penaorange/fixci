@@ -197,16 +197,15 @@ class Peserta_berbayar extends MX_Controller {
  	$this->load->view('Result_Tryout_bayar', $hasilnya);
  }
 
-
  function kumpulan_soal_bayar(){
-	$this->cek_session();
-	$this->load->view('Soal_bayar');
- }
-
- function pembahasan_bayar(){
  $this->cek_session();
- $this->load->view('Pembahasan_bayar');
+ $this->load->view('Soal_bayar');
  }
 
+ function universitas_bayar(){
+ $this->cek_session();
+ $data['univ'] = $this->Model_berbayar->tampil_univ()->result();
+ $this->load->view('Universitas_bayar', $data);
+ }
 
 }

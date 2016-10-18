@@ -47,7 +47,7 @@
 
                               <div class="paginate pagination pagination-lg">
                                 <div class="items">
-                                <form action="<?php echo site_url('cek-TO-free') ?>" method="post" id="hasil" onsubmit="return deleteAllCookies('seconds', 'minutes')">
+                                <form action="<?php echo site_url('cek-TO-free') ?>" method="post" id="hasil" onsubmit="deleteAllCookies('seconds', 'minutes')">
                                   <input type="hidden" name="idTrans" value="<?php echo $idTrans; ?>" />
                                   <input type="hidden" name="idMapel" value="<?php echo $mapel_id; ?>" />
                                   <input type="hidden" name="idTo" value="<?php echo $to_id; ?>" />
@@ -58,9 +58,6 @@
                                     <div class="media" id="soal<?php echo $i; ?>">
                                       <span class="btn btn-primary num-soal btn-fill"><?php echo $i; ?></span>
                                       <div class="media-body">
-                                        <?php if ($key->gambar != null) : ?>
-                                          <img class="gambar-soal img-responsive img-thumbnail" src="<?php echo base_url();?>assets/peserta/img/<?php echo $key->gambar; ?>" class="img-rounded">
-                                        <?php endif; ?>
                                         <h4 class="media-heading breadcrumb"><?php echo $key->soal ;?></h4>
                                       </div>
                                     </div>
