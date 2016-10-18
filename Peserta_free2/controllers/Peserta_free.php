@@ -164,7 +164,8 @@ function cekJawaban_free(){
 	$benar=0;
 	$salah=0;
 	$kosong=0;
-	
+	$koreksi=array();
+	$idSalah = array();
 	for ($i=0; $i <sizeOf($result) ; $i++) {
 				$id = $result[$i]['id_soal'];
 				// $data[$id];

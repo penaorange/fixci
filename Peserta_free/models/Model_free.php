@@ -106,7 +106,6 @@ class Model_free extends CI_Model {
         $this->db->where($id1);
         return $this->db->get();
 //        $aman1 = $query->result_array();
-
 //        $this->db->select('nilai_aman');
 //        $this->db->from('tb_prodi');
 //        $this->db->where('id_prodi', $id2);
@@ -118,7 +117,6 @@ class Model_free extends CI_Model {
 //        $this->db->where('id_prodi', $id3);
 //        $query = $this->db->get();
 //        $aman3 = $query->result_array();
-
 //        return array(
 //            'aman_1' => $aman1,
 ////            'aman_2' => $aman2,
@@ -137,6 +135,30 @@ class Model_free extends CI_Model {
 
     public function nilaiAkhir($data) {
         $this->db->insert('tb_hasil', $data);
+    }
+
+    public function tampilNilaiNas($id) {
+        $this->db->select('nm_tryout as nm_to,tryout.id_tryout as id_to, nilai_to as nilai, pilihan1 as pil1, aman_1 as aman1');
+        $this->db->from('tb_hasil as hasil');
+        $this->db->join('tb_tryout as tryout', 'hasil.id_tryout = tryout.id_tryout');
+        $this->db->where('hasil.id_peserta', $id);
+        return $this->db->get();
+    }
+
+    public function getnamaprodi($id) {
+        $this->db->select('*');
+        $this->db->from('tb_prodi');
+        $this->db->where('id_prodi', $id);
+        return $this->db->get();
+    }
+
+    public function detailNilai($id_peserta, $id_to) {
+        $this->db->select('jaw.id_mapel as idmapel, mapel.nm_mapel as nm_mapel, jmlh_kosong, jmlh_salah,jmlh_benar');
+        $this->db->from('tb_jawaban as jaw');
+        $this->db->join('tb_mapel as mapel','jaw.id_mapel = mapel.id_mapel');
+        $this->db->where('id_peserta',$id_peserta);
+        $this->db->where('id_tryout',$id_to);
+        return $this->db->get();
     }
 
 }

@@ -1,5 +1,18 @@
 <?php $this->load->view('PesertaModular/Free/Header_test'); ?>
 <!-- start-modular -->
+<div id="lihatStatus">
+    <a class="btn btn-info push-5-r btn-fill btn-sm push-10"></a><span> Sudah</span>
+    <a class="btn btn-danger push-5-r btn-fill btn-sm push-10"></a><span> Belum <i class="ellipsis-v"></i></span>
+<div class="btn-group">
+  <?php $i=1; ?>
+  <?php foreach ($soal as $jumlah_soal): ?>
+    <a class="btn btn-danger push-5-r btn-fill btn-xs push-10" id="status<?php echo $jumlah_soal->id_soal; ?>"><?php echo $i; ?></a>
+
+  <?php $i++; ?>
+  <?php endforeach; ?>
+
+</div>
+</div>
 
 <div class="content">
             <div class="container-fluid">
@@ -9,6 +22,7 @@
                   </div> -->
 					<div class="col-md-8 col-lg-8 col-sm-8 col-xs-8">
                         <div class="card">
+                          <button type="button" id="lihat" class="btn btn-primary btn-fill "><i class="fa fa-arrow-up"></i>Status Pengisian</button>
                           <?php if (empty($nama_mapel) && empty($soal)): ?>
                             <div class="header text-center">
                                 <h4 class="title"><i class="fa fa-warning"></i> Unknown Data</h4>
@@ -41,16 +55,12 @@
                                   <?php foreach ($soal as $key): ?>
                                   <div class="konten">
 
-                                    <div class="media">
-                                      <!-- <div class="media-left">
-
-                                      </div>
-                                      <div class="media-body">
-                                        <span class="btn btn-primary num-soal btn-fill"><?php echo $i; ?></span>
-                                        <h4 class="media-heading breadcrumb"><?php echo $key->soal ;?></h4>
-                                      </div> -->
+                                    <div class="media" id="soal<?php echo $i; ?>">
                                       <span class="btn btn-primary num-soal btn-fill"><?php echo $i; ?></span>
                                       <div class="media-body">
+                                        <?php if ($key->gambar != null) : ?>
+                                          <img class="gambar-soal img-responsive img-thumbnail" src="<?php echo base_url();?>assets/peserta/img/<?php echo $key->gambar; ?>" class="img-rounded">
+                                        <?php endif; ?>
                                         <h4 class="media-heading breadcrumb"><?php echo $key->soal ;?></h4>
                                       </div>
                                     </div>
@@ -58,31 +68,31 @@
 
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="pil[<?=$key->id_soal?>]" value="A" data-toggle="radio">
+                                        <input type="radio" name="pil[<?=$key->id_soal?>]" value="A" onchange="statusPengisian('status<?= $key->id_soal;?>')" data-toggle="radio">
                                         <?php echo $key->pilihan_a; ?>
                                       </label>
                                     </div>
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="pil[<?=$key->id_soal?>]" value="B" data-toggle="radio">
+                                        <input type="radio" name="pil[<?=$key->id_soal?>]" value="B" onchange="statusPengisian('status<?= $key->id_soal;?>')" data-toggle="radio">
                                         <?php echo $key->pilihan_b; ?>
                                       </label>
                                     </div>
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="pil[<?=$key->id_soal?>]" value="C" data-toggle="radio">
+                                        <input type="radio" name="pil[<?=$key->id_soal?>]" value="C" onchange="statusPengisian('status<?= $key->id_soal;?>')" data-toggle="radio">
                                         <?php echo $key->pilihan_c; ?>
                                       </label>
                                     </div>
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="pil[<?=$key->id_soal?>]" value="D" data-toggle="radio">
+                                        <input type="radio" name="pil[<?=$key->id_soal?>]" value="D" onchange="statusPengisian('status<?= $key->id_soal;?>')" data-toggle="radio">
                                         <?php echo $key->pilihan_d; ?>
                                       </label>
                                     </div>
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="pil[<?=$key->id_soal?>]" value="E" data-toggle="radio">
+                                        <input type="radio" name="pil[<?=$key->id_soal?>]" value="E" onchange="statusPengisian('status<?= $key->id_soal;?>')" data-toggle="radio">
                                         <?php echo $key->pilihan_e; ?>
                                       </label>
                                     </div>
