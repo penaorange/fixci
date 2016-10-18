@@ -53,7 +53,7 @@
                                                     <td>-</td>
                                                     <td>-</td>
                                                     <td>-</td>
-                                                    <td><a href="<?= site_url(' peserta_free/detailnilai/'.$key->id_to)?>">Detail</a></td>
+                                                    <td><a href="<?= site_url('peserta_free/detailnilai/'.$key->id_to)?>">Detail</a></td>
                                                 </tr>
                                                 <?php $i++ ?>
                                             <?php endforeach; ?>

@@ -241,7 +241,11 @@ class Peserta_free extends MX_Controller {
         $nilai_to = $this->load->Model_free->nilaiTotal($data['id_peserta'], $idtryout)->row();
         $nilainas = $nilai_to->totalnilai;
 
-        if ($this->session->user_data['id_kelompok_keilmuan'] == 3) {
+        if ($this->session->user_data['id_kelompok_keilmuan'] == 1) {
+            $data['nilai_to'] = floatval(500 + (($nilainas - 126) / 34.4) * 100);
+        } else if ($this->session->user_data['id_kelompok_keilmuan'] == 2) {
+            $data['nilai_to'] = floatval(500 + (($nilainas - 134) / 46) * 100);
+        } else {
             $data['nilai_to'] = floatval(500 + (($nilainas - 126) / 34.4) * 100);
         }
 
@@ -256,8 +260,8 @@ class Peserta_free extends MX_Controller {
 //        echo $id;
         $id_try = $this->uri->segment(3);
 //        echo $id_try;
-        
-        $data['nilai'] = $this->Model_free->detailnilai($id,$id_try)->result();
+
+        $data['nilai'] = $this->Model_free->detailnilai($id, $id_try)->result();
 //        $data1 = $this->Model_free->tampilNilaiNas($id)->row();
 //        $pil1 = $data1->pil1;
 //        $data['aman_1'] = $nilaiaman;
@@ -267,7 +271,7 @@ class Peserta_free extends MX_Controller {
         $this->load->view('Detail_nilai', $data);
 //        var_dump($data);
     }
-    
+
     public function getUniversitas($wilayah) {
         $data['universitas'] = $this->Model_free->getUniversitas(array('wilayah' => $wilayah))->result();
         echo json_encode($data);
