@@ -97,7 +97,6 @@
         </div>
     </div>
 </div>
-
 <input type="hidden" id="base-url" value="<?= base_url() ?>">
 <input type="hidden" id="kelompok-keilmuan" value="<?= $kk ?>" >
 <!-- end modular -->

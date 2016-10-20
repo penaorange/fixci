@@ -19,15 +19,11 @@
                                         <thead class="card">
                                             <tr>
                                                 <td>No.</td>
-                                                <td>Nama Tryout</td>
-                                                <td>Nilai Nasional</td>
-                                                <td>Pil 1</td>
-                                                <td>Prediksi</td>
-                                                <td>Pil 2</td>
-                                                <td>Prediksi</td>
-                                                <td>Pil 3</td>
-                                                <td>Prediksi</td>
-                                                <td>Aksi</td>
+                                                <td>ID Paket</td>
+                                                <td>Nama Paket</td>
+                                                <td>Benar</td>
+                                                <td>Salah</td>
+                                                <td>Kosong</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -35,25 +31,11 @@
                                             <?php foreach ($nilai as $key): ?>
                                                 <tr>
                                                     <td><?php echo $i; ?></td>
-                                                    <td><?php echo $key->nm_to; ?></td>
-                                                    <td><?php echo $key->nilai; ?></td>
-                                                    <td><?php echo $nm_prodi->nm_prodi; ?></td>
-                                                    <td>
-                                                        <?php
-                                                        if ($key->nilai < $key->aman1) {
-                                                            echo 'Tidak Lulus';
-                                                        } elseif ($key->nilai >= $key->aman1) {
-                                                            echo 'Lulus';
-                                                        }else{
-                                                            echo 'Error';
-                                                        }
-                                                        ?>
-                                                    </td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                    <td><a href="<?= site_url('peserta_free/detailnilai/'.$key->id_to)?>">Detail</a></td>
+                                                    <td><?php echo $key->idmapel; ?></td>
+                                                    <td><?php echo $key->nm_mapel; ?></td>
+                                                    <td><?php echo $key->jmlh_benar; ?></td>
+                                                    <td><?php echo $key->jmlh_salah; ?></td>
+                                                    <td><?php echo $key->jmlh_kosong; ?></td>
                                                 </tr>
                                                 <?php $i++ ?>
                                             <?php endforeach; ?>

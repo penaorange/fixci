@@ -108,10 +108,19 @@ class Peserta_free extends MX_Controller {
     function nilai_free() {
         $this->cek_session();
         $user = $this->session->userdata('user_data');
-        $id['id_peserta'] = $user['id_peserta'];
-        $data['nilai'] = $this->Model_free->select_nilai_tryout($id)->result();
+//        $id['id_peserta'] = $user['id_peserta'];
+        $id = $user['id_peserta'];
+//        echo $id;
+
+        $data['nilai'] = $this->Model_free->tampilNilaiNas($id)->result();
+        $data1 = $this->Model_free->tampilNilaiNas($id)->row();
+        $pil1 = $data1->pil1;
+//        $data['aman_1'] = $nilaiaman;
+        $data['nm_prodi'] = $this->Model_free->getnamaProdi($pil1)->row();
+//        $data['nilai'] = $this->Model_free->select_nilai_tryout($id)->result();
         // $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
         $this->load->view('Nilai_free', $data);
+//        var_dump($data);
     }
 
     function tryout_free() {
@@ -227,16 +236,40 @@ class Peserta_free extends MX_Controller {
 //        var_dump($data);
 //        var_dump ($aman_1);
         $data['id_peserta'] = $this->session->user_data['id_peserta'];
+        $data['id_tryout'] = $this->input->post('idtryout');
 //        echo $data['id_peserta'];
         $nilai_to = $this->load->Model_free->nilaiTotal($data['id_peserta'], $idtryout)->row();
         $nilainas = $nilai_to->totalnilai;
 
-        if ($this->session->user_data['id_kelompok_keilmuan'] == 3) {
+        if ($this->session->user_data['id_kelompok_keilmuan'] == 1) {
+            $data['nilai_to'] = floatval(500 + (($nilainas - 126) / 34.4) * 100);
+        } else if ($this->session->user_data['id_kelompok_keilmuan'] == 2) {
+            $data['nilai_to'] = floatval(500 + (($nilainas - 134) / 46) * 100);
+        } else {
             $data['nilai_to'] = floatval(500 + (($nilainas - 126) / 34.4) * 100);
         }
 
         $this->load->Model_free->nilaiAkhir($data);
         redirect(site_url('nilai-free'));
+    }
+
+    public function detailnilai() {
+        $this->cek_session();
+        $user = $this->session->userdata('user_data');
+        $id = $user['id_peserta'];
+//        echo $id;
+        $id_try = $this->uri->segment(3);
+//        echo $id_try;
+
+        $data['nilai'] = $this->Model_free->detailnilai($id, $id_try)->result();
+//        $data1 = $this->Model_free->tampilNilaiNas($id)->row();
+//        $pil1 = $data1->pil1;
+//        $data['aman_1'] = $nilaiaman;
+//        $data['nm_prodi'] = $this->Model_free->getnamaProdi($pil1)->row();
+//        $data['nilai'] = $this->Model_free->select_nilai_tryout($id)->result();
+        // $data['pelajaran'] = $this->Model_free->select_mapel($id_profil)->result();
+        $this->load->view('Detail_nilai', $data);
+//        var_dump($data);
     }
 
     public function getUniversitas($wilayah) {

@@ -58,6 +58,9 @@
                                     <div class="media" id="soal<?php echo $i; ?>">
                                       <span class="btn btn-primary num-soal btn-fill"><?php echo $i; ?></span>
                                       <div class="media-body">
+                                        <?php if ($key->gambar != null) : ?>
+                                          <img class="gambar-soal img-responsive img-thumbnail" src="<?php echo base_url();?>assets/peserta/img/<?php echo $key->gambar; ?>" class="img-rounded">
+                                        <?php endif; ?>
                                         <h4 class="media-heading breadcrumb"><?php echo $key->soal ;?></h4>
                                       </div>
                                     </div>
