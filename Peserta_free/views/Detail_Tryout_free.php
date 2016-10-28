@@ -64,10 +64,10 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-12">
                                     <form action="<?= base_url('index.php/peserta_free/nilaitryout'); ?>" method="post">
-                                        <label>pilihan 1</label>
+                                        <!--<label>pilihan 1</label>-->
                                         <div class="">
                                             <div class="col-sm-2 col-md-2">
-                                                <select class="form-control" id="wilayah" required>
+                                                <select class="form-control" id="wilayah1" required>
                                                     <option>Wilayah</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -76,10 +76,46 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-4 col-md-4">
-                                                <select class="form-control" id="universitas" required></select>
+                                                <select class="form-control" id="universitas1" required></select>
                                             </div>
                                             <div class="col-sm-6 col-md-6">
-                                                <select class="form-control" name="pilihan1" id="prodi" required></select>
+                                                <select class="form-control" name="pilihan1" id="prodi1" required></select>
+                                                <input type="hidden" name="idtryout" value="<?php echo $id_tryout; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <div class="col-sm-2 col-md-2">
+                                                <select class="form-control" id="wilayah2" required>
+                                                    <option>Wilayah</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4 col-md-4">
+                                                <select class="form-control" id="universitas2" required></select>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <select class="form-control" name="pilihan1" id="prodi2" required></select>
+                                                <input type="hidden" name="idtryout" value="<?php echo $id_tryout; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <div class="col-sm-2 col-md-2">
+                                                <select class="form-control" id="wilayah3" required>
+                                                    <option>Wilayah</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4 col-md-4">
+                                                <select class="form-control" id="universitas3" required></select>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <select class="form-control" name="pilihan1" id="prodi3" required></select>
                                                 <input type="hidden" name="idtryout" value="<?php echo $id_tryout; ?>">
                                             </div>
                                         </div>
@@ -103,18 +139,18 @@
 <?php $this->load->view('PesertaModular/Free/Footer'); ?>
 <script>
     var base_url = $('#base-url').val();
-    $('#wilayah').on('change', function () {
-        var wilayah = $('#wilayah').val();
+    $('#wilayah1').on('change', function () {
+        var wilayah = $('#wilayah1').val();
         $.ajax({
             url: base_url + 'Peserta_free/getUniversitas/' + wilayah,
             type: 'POST',
             success: function (res) {
                 res = $.parseJSON(res);
-                $('#universitas').removeAttr('disabled');
-                $('option').remove('#universitasOption');
-                $('option').remove('#prodiOption');
+                $('#universitas1').removeAttr('disabled');
+                $('option').remove('#universitasOption1');
+                $('option').remove('#prodiOption1');
                 $.each(res.universitas, function (key, value) {
-                    $('#universitas').append("<option id='universitasOption' class='form-control' value='" + value.id_universitas + "'>" + value.nm_universitas + "</option>");
+                    $('#universitas1').append("<option id='universitasOption1' class='form-control' value='" + value.id_universitas + "'>" + value.nm_universitas + "</option>");
                 })
             },
             error: function (jqXHR, exception) {
@@ -123,8 +159,8 @@
         });
     }
     )
-    $('#universitas').on('change', function () {
-        var universitas = $('#universitas').val();
+    $('#universitas1').on('change', function () {
+        var universitas = $('#universitas1').val();
         var kelompokKeilmuan = $('#kelompok-keilmuan').val();
         $.ajax({
             url: base_url + 'Peserta_free/getProdi/' + universitas +'/'+kelompokKeilmuan ,
@@ -132,9 +168,91 @@
             success: function (res) {
                 res = $.parseJSON(res);
                 $('#prodi').removeAttr('disabled');
-                $('option').remove('#prodiOption');
+                $('option').remove('#prodiOption1');
                 $.each(res.prodi, function (key, value) {
-                    $('#prodi').append("<option id='prodiOption' class='form-control' value='" + value.id_prodi + "'>" + value.nm_prodi + "</option>");
+                    $('#prodi1').append("<option id='prodiOption1' class='form-control' value='" + value.id_prodi + "'>" + value.nm_prodi + "</option>");
+                })
+            },
+            error: function (jqXHR, exception) {
+                alert('gagal');
+            },
+        });
+    }
+    )
+    var base_url = $('#base-url').val();
+    $('#wilayah2').on('change', function () {
+        var wilayah = $('#wilayah2').val();
+        $.ajax({
+            url: base_url + 'Peserta_free/getUniversitas/' + wilayah,
+            type: 'POST',
+            success: function (res) {
+                res = $.parseJSON(res);
+                $('#universitas2').removeAttr('disabled');
+                $('option').remove('#universitasOption2');
+                $('option').remove('#prodiOption2');
+                $.each(res.universitas, function (key, value) {
+                    $('#universitas2').append("<option id='universitasOption2' class='form-control' value='" + value.id_universitas + "'>" + value.nm_universitas + "</option>");
+                })
+            },
+            error: function (jqXHR, exception) {
+                alert('gagal');
+            },
+        });
+    }
+    )
+    $('#universitas2').on('change', function () {
+        var universitas = $('#universitas2').val();
+        var kelompokKeilmuan = $('#kelompok-keilmuan').val();
+        $.ajax({
+            url: base_url + 'Peserta_free/getProdi/' + universitas +'/'+kelompokKeilmuan ,
+            type: 'POST',
+            success: function (res) {
+                res = $.parseJSON(res);
+                $('#prodi').removeAttr('disabled');
+                $('option').remove('#prodiOption2');
+                $.each(res.prodi, function (key, value) {
+                    $('#prodi2').append("<option id='prodiOption2' class='form-control' value='" + value.id_prodi + "'>" + value.nm_prodi + "</option>");
+                })
+            },
+            error: function (jqXHR, exception) {
+                alert('gagal');
+            },
+        });
+    }
+    )
+    var base_url = $('#base-url').val();
+    $('#wilayah3').on('change', function () {
+        var wilayah = $('#wilayah3').val();
+        $.ajax({
+            url: base_url + 'Peserta_free/getUniversitas/' + wilayah,
+            type: 'POST',
+            success: function (res) {
+                res = $.parseJSON(res);
+                $('#universitas3').removeAttr('disabled');
+                $('option').remove('#universitasOption3');
+                $('option').remove('#prodiOption3');
+                $.each(res.universitas, function (key, value) {
+                    $('#universitas3').append("<option id='universitasOption3' class='form-control' value='" + value.id_universitas + "'>" + value.nm_universitas + "</option>");
+                })
+            },
+            error: function (jqXHR, exception) {
+                alert('gagal');
+            },
+        });
+    }
+    )
+    $('#universitas3').on('change', function () {
+        var universitas = $('#universitas3').val();
+        var kelompokKeilmuan = $('#kelompok-keilmuan').val();
+        $.ajax({
+            url: base_url + 'Peserta_free/getProdi/' + universitas +'/'+kelompokKeilmuan ,
+            type: 'POST',
+            success: function (res) {
+                res = $.parseJSON(res);
+                $('#prodi').removeAttr('disabled');
+                $('option').remove('#prodiOption3');
+                $.each(res.prodi, function (key, value) {
+                    $('#prodi3').append("<option id='prodiOption3' class='form-control' value='" + value.id_prodi + "'>" + value.nm_prodi + "</option>");
                 })
             },
             error: function (jqXHR, exception) {
