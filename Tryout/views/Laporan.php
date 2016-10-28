@@ -47,10 +47,10 @@
                                     <tr>
                                     <td><?= $value->id_peserta ?></td>
                                     <td><?= $value->nm_peserta ?></td>
-                                    <td><?= $value->total_nilai ?></td>
-                                    <td><?= $value->pilihan1 ?></td>
-                                    <td><?= $value->pilihan2 ?></td>
-                                    <td><?= $value->pilihan3 ?></td>
+                                    <td><?= $value->total ?></td>
+                                    <td><?= $value->prodi1 ?></td>
+                                    <td><?= $value->prodi2 ?></td>
+                                    <td><?= $value->prodi3 ?></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>

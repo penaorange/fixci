@@ -74,9 +74,8 @@ class Tryout extends CI_Controller {
     }
 
     function laporan($id,$kp) {
-//        $data= $this->Mtryout->tampilJawaban(array('id_tryout'=>$id,'id_kelompok_peserta'=>$kp))->result();
-        $data['jawaban'] = $this->Mtryout->tampilHasil(array('id_kelompok_peserta'=>$kp))->result();
-//        echo json_encode($data);
+        $data['jawaban']= $this->Mtryout->getDataPeserta(array('id_tryout'=>$id,'id_kelompok_peserta'=>$kp))->result();
+//        $data['jawaban'] = $this->Mtryout->tampilHasil(array('id_kelompok_peserta'=>$kp))->result();
         $data['id_tryout'] = $id;
         $datap['kelompok_peserta'] = $kp;
         $this->load->view('Laporan',$data);
@@ -89,15 +88,19 @@ class Tryout extends CI_Controller {
         $this->load->library('excel/Parser');
         $this->load->library('excel/Workbook');
         $this->load->library('excel/Worksheet');
-        
+                
         $res['data']= $this->Mtryout->tampilJawaban(array('id_tryout'=>$idTo,'id_kelompok_peserta'=>$kp))->result();
-        $res['prodi'];
-        $i = 0;
-        foreach ($res['data'] as $value) {
-            $res['mapel'][$i] = $this->Mtryout->getMapel(array('id_mapel'=>$value->id_mapel))->result();
-            $i++;
+        $res['jumlah_mapel'] = $this->Mtryout->countMapel(array('id_tryout'=>$idTo))->result();
+        $i = 1;
+        foreach ($res['jumlah_mapel'] as $mapel) {
+            $jumMapel = $mapel->jumlah_mapel;
         }
-//        echo json_encode($res);
+        foreach ($res['data'] as $value) {
+            if ($i <= $jumMapel) {
+                 $res['mapel'][$i] = $this->Mtryout->getMapel(array('id_mapel'=>$value->id_mapel))->result();
+                 $i++;
+            }
+        }
         $this->load->view('excelfiles', $res);
     }
 
